@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/foldleft.html" class="active"><strong aria-hidden="true">1.1.</strong> foldleft</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="../java/foldleft.html" class="active"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -166,15 +166,49 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="foldleft-in-java"><a class="header" href="#foldleft-in-java"><code>foldLeft</code> in Java</a></h1>
-<p>Scala provides a <code>foldLeft</code> function to apply a binary operator to a start value and all elements of a list, going left to right. </p>
-<p>In Java, you can use the <code>Collector</code></p>
+<p>In Java, you can use the <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collector.html">Collector</a> interface to perform <em>reduction</em> operations on a collection, which is similar to the <code>foldLeft</code> function in Scala.</p>
+<pre><code class="language-java">static &lt;T,R&gt; Collector&lt;T,R,R&gt; of(Supplier&lt;R&gt; supplier,
+                                 BiConsumer&lt;R,T&gt; accumulator,
+                                 BinaryOperator&lt;R&gt; combiner,
+                                 Collector.Characteristics... characteristics)
+</code></pre>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<p>Given an example that one customer has multiple bank accounts:</p>
+<pre><code class="language-java">public class BankAccount {
+    String customerName;
+    double balance;
+
+    // getter, setters..
+}
+
+</code></pre>
+<p>We want to group a list of bank accounts by customer name and find out the balance across the customers' bank accoutns.</p>
+<pre><code class="language-java">List&lt;BankAccount&gt; bankAccounts; //...
+
+Map&lt;String, Double&gt; customers = bankAccounts.stream()
+    .collect(Collector.of(
+        (Supplier&lt;HashMap&lt;String, Double&gt;&gt;) HashMap::new,
+        (result, bankAccount) -&gt; {
+            var sum = result.getOrDefault(bankAccount.getCustomerName(), 0.0);
+            result.put(b.getCustomerName(), sum + bankAccount.getBalance());
+        },
+        (a, b) -&gt; a
+    ));
+
+</code></pre>
+<p>This can also be addressed by using Java built-in <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#groupingBy-java.util.function.Function-java.util.stream.Collector-">groupingBy</a> collector:</p>
+<pre><code class="language-java">bankAccounts.stream()
+    .collect(Collectors.groupingBy(BankAccount::getCustomerName,
+        Collectors.summingDouble(BankAccount::getBalance)));
+
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../java/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../java/reduce.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
@@ -188,7 +222,7 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../java/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../java/reduce.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
