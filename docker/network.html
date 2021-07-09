@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>reduce</title>
+        <title>network</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/reduce.html" class="active"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="../java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="../docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="../docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="../docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="../java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="../docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="../docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="../docker/network.html" class="active"><strong aria-hidden="true">2.3.</strong> network</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -165,47 +165,51 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="reduce-in-java"><a class="header" href="#reduce-in-java"><code>reduce</code> in Java</a></h1>
-<p>The <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#reduce-T-java.util.function.BinaryOperator-">reduce</a> function below will just work fine.</p>
-<pre><code class="language-java">Integer sum = integers.reduce(0, (a, b) -&gt; a+b);
+                        <h1 id="network"><a class="header" href="#network">network</a></h1>
+<h2 id="you-dont-need-docker-compose"><a class="header" href="#you-dont-need-docker-compose">You don't need <code>docker-compose</code></a></h2>
+<p><code>docker-compose</code> by default creates a <code>bridge</code> docker network named <code>&lt;directory&gt;_default</code> for connecting docker containers. To specify different network name:</p>
+<pre><code class="language-yaml">version: &quot;3.3&quot;
+services:
+  web:
+    image: registry/image_name:version
+    container_name: web
+    networks:
+      - skywalker 	
 
+  postgres:
+    image: registry/image_name:version
+    container_name: postgres
+    networks:
+      - skywalker 	
+  
+networks:
+  skywalker:
+    driver: bridge  	
 </code></pre>
-<p>However, when the arguments paassed to the <code>BinaryOperator&lt;T&gt;</code> accumulator are of different types, the compiler complains.</p>
-<h2 id="example"><a class="header" href="#example">Example</a></h2>
-<p>Given a list of bank transactions.</p>
-<pre><code class="language-java">public class Transaction {
-  double amount;
-}
-</code></pre>
-<p>We want to calcuate the sum</p>
-<pre><code class="language-java">List&lt;Transaction&gt; transactions; //...
+<p>This will create a <code>bridge</code> docker network named <code>skywalker_docker</code>.</p>
+<p>The reason why the containers are interconnected is that they share the same <code>docker bridged network</code>. The <code>docker-compose</code> yaml scripts can be easily rewritten using <code>docker network</code>.</p>
+<pre><code class="language-bash">docker network create -d bridge skywalker
 
-double sum = transactions.stream()
-    .reduce(0.0, (result, t) -&gt; result + t.getAmount(), Double::sum);
-
+docker run -d --rm --network skywalker --name web registry/image_name:version
+docker run -d --rm --network skywalker --name postgres registry/image_name:version
 </code></pre>
-<p>We have to provide a <code>Double::sum</code> combiner parameter for it to compile. Taking a closer look at the API:</p>
-<pre><code class="language-java">&lt;U&gt; U reduce(U identity,
-             BiFunction&lt;U,? super T,U&gt; accumulator,
-             BinaryOperator&lt;U&gt; combiner)
-
+<p>And the <code>web</code> container can communicate the <code>postgres</code> container through <code>postgres:5432</code>.</p>
+<p><strong>Note:</strong> The <code>container_name</code> is the host inside the docker network.</p>
+<p>To inspect the network:</p>
+<pre><code class="language-bash">docker network inspect skywalker
 </code></pre>
-<p>The arguments of our accumulator above has different types which are of <code>Transaction</code> and <code>Double</code>. Therefore, we need the third combiner.</p>
+<p>Other useful commands can be found at <a href="https://docs.docker.com/engine/reference/commandline/network/">https://docs.docker.com/engine/reference/commandline/network/</a>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../java/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../docker/volume.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../java/foldleft.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -215,15 +219,11 @@ double sum = transactions.stream()
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../java/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../docker/volume.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a rel="next" href="../java/foldleft.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 

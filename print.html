@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -232,6 +232,127 @@ Map&lt;String, Double&gt; customers = bankAccounts.stream()
         Collectors.summingDouble(BankAccount::getBalance)));
 
 </code></pre>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="docker"><a class="header" href="#docker">Docker</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="dockerfile"><a class="header" href="#dockerfile">Dockerfile</a></h1>
+<p>The default working directory is root <code>/</code>.</p>
+<p><code>WORKDIR</code> is used to set working directory for any <code>RUN</code>, <code>COPY</code>, <code>ADD</code>, <code>ENTRYPOINT</code>, <code>CMD</code> instructions. And the directory is created if it does not exist.</p>
+<h2 id="entrypoint-and-cmd"><a class="header" href="#entrypoint-and-cmd">ENTRYPOINT and CMD</a></h2>
+<p><code>ENTRYPOINT</code> + <code>CMD</code> = default container command arguments</p>
+<p>Thus</p>
+<pre><code class="language-Dockerfile">ENTRYPOINT [&quot;/docker-entrypoint.sh&quot;]
+CMD [&quot;java&quot;, &quot;-jar&quot;, &quot;app.jar&quot;]
+</code></pre>
+<p>Is equivalent to</p>
+<pre><code class="language-Dockerfile">ENTRYPOINT [&quot;/docker-entrypoint.sh&quot;, &quot;java&quot;, &quot;-jar&quot;, &quot;app.jar&quot;]
+</code></pre>
+<h3 id="override-cmd-and-entrypoint"><a class="header" href="#override-cmd-and-entrypoint">Override CMD and ENTRYPOINT</a></h3>
+<p>Specifying <code>CMD</code> in <code>Dockerfile</code> merely creates a default value and can be overriden by <code>docker run</code></p>
+<p>For the <code>Dockerfile</code> above, if we we invoke</p>
+<pre><code class="language-bash">docker run myservice java -DlogLevel=debug -jar app.jar
+</code></pre>
+<p>The container will be created with the following arguments:</p>
+<pre><code class="language-Dockerfile">[&quot;/docker-entrypoint.sh&quot;, &quot;java&quot;, &quot;-DlogLevel=debug&quot; &quot;-jar&quot;, &quot;app.jar&quot;]
+</code></pre>
+<p>To override the <code>ENTRYPOINT</code> declared in a <code>Dockerfile</code>, specify <code>docker run --entrypoint</code> flag.</p>
+<pre><code class="language-Dockefile">docker run --entrypoint /docker-entrypoint2.sh myservice
+</code></pre>
+<p>To reset the container entrypoint, pass an empty string:</p>
+<pre><code class="language-Dockerfile">docker run --entrypoint=&quot;&quot; myservice bash
+</code></pre>
+<p><em>Note</em> this also overrides the <code>CMD</code> command with <code>bash</code>.</p>
+<h2 id="arg"><a class="header" href="#arg">ARG</a></h2>
+<pre><code class="language-Dockefile">ARG GCLOUD_SDK_VERSION=286.0.0-alpine
+
+FROM google/cloud-sdk:$GCLOUD_SDK_VERSION
+</code></pre>
+<p>The <code>ARG</code> defines a variable that users can pass at image build-time</p>
+<pre><code class="language-bash">docker build --build-arg GCLOUD_SDK_VERSION=290.0.0 .
+</code></pre>
+<p>Note the <code>.</code> dot is representing the context where the docker image is built. Typically for the <code>COPY context/path/file /container/workdir</code></p>
+<p>To build the image from another <code>Dockerfile</code>:</p>
+<pre><code class="language-bash">docker build --build-arg GCLOUD_SDK_VERSION=290.0.0 -f path/to/Dockefile .
+</code></pre>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="volume"><a class="header" href="#volume">Volume</a></h1>
+<pre><code class="language-Dockerfile">VOLUME [&quot;/data&quot;]
+</code></pre>
+<p>The <code>VOLUME</code> creates a mount point to <strong>the volume on the host</strong> that holds the data persisted by the docker container during container runtime.</p>
+<p>When running a docker container, the volume (directory) is created at the Docker root directory of the host machine - <code>/var/lib/docker/volumes</code>.</p>
+<p>The name of volume is autogenerated and extreamly long, which are often referred to as &quot;unnamed&quot; or &quot;anonymous&quot;.</p>
+<p>However if the mount point is specified in the <code>docker run -v</code> or <code>docker run --mount</code> command, Docker will create and use the volume as specified on the host instead of the default volume specified in the Dockerfile.</p>
+<h2 id="example-2"><a class="header" href="#example-2">Example</a></h2>
+<p>In the offical <a href="https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L87">mysql Dockerfile</a>:</p>
+<pre><code class="language-Dockerfile">VOLUME /var/lib/mysql
+</code></pre>
+<p>If we run the mysql container</p>
+<pre><code class="language-bash">docker run mysql:8
+</code></pre>
+<p>The mysql container instance will use the default mount point which is specified by the <code>VOLUME</code> instruction in the Dockerfile. And in my host,the volume is created at</p>
+<pre><code class="language-bash">/var/lib/docker/volumes/00b4488b017762870295a3894aa1d2ff2b3c6126e445273ef45e279f6ee8ddf9
+</code></pre>
+<p>If we run the mysql container</p>
+<pre><code class="language-bash">docker run -v /my/own/datadir:/var/lib/mysql mysql:8
+</code></pre>
+<p>This command mounts <code>/my/own/datadir</code> directory on my host as <code>/var/lib/mysql</code> inside the container instead.</p>
+<h2 id="where-to-store-data"><a class="header" href="#where-to-store-data">Where to Store Data</a></h2>
+<p>There are several ways to store data used by applications that run in Docker containers. We encourage users of the mysql images to familiarize themselves with the options available, including:</p>
+<ul>
+<li>
+<p>Let Docker manage the storage of your database data by <a href="https://docs.docker.com/engine/tutorials/dockervolumes/#adding-a-data-volume">writing the database files to disk on the host system using its own internal volume managemen</a>. This is the default and is easy and fairly transparent to the user. The downside is that the files may be hard to locate for tools and applications that run directly on the host system, i.e. outside containers.</p>
+</li>
+<li>
+<p>Create a data directory on the host system (outside the container) and <a href="https://docs.docker.com/engine/tutorials/dockervolumes/#mount-a-host-directory-as-a-data-volume">mount this to a directory visible from inside the container</a>. This places the database files in a known location on the host system, and makes it easy for tools and applications on the host system to access the files. The downside is that the user needs to make sure that the directory exists, and that e.g. directory permissions and other security mechanisms on the host system are set up correctly.</p>
+</li>
+</ul>
+<p>The Docker documentation is a good starting point for understanding the different storage options and variations, and there are multiple blogs and forum postings that discuss and give advice in this area. We will simply show the basic procedure here for the latter option above:</p>
+<ol>
+<li>
+<p>Create a data directory on a suitable volume on your host system, e.g. /my/own/datadir.</p>
+</li>
+<li>
+<p>Start your mysql container like this:</p>
+</li>
+</ol>
+<pre><code class="language-bash">$ docker run --name some-mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+</code></pre>
+<p>The <code>-v /my/own/datadir:/var/lib/mysql</code> part of the command mounts the <code>/my/own/datadir</code> directory from the underlying host system as <code>/var/lib/mysql</code> inside the container, where MySQL by default will write its data files.</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://hub.docker.com/_/mysql/">https://hub.docker.com/_/mysql/</a></li>
+</ul>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="network"><a class="header" href="#network">network</a></h1>
+<h2 id="you-dont-need-docker-compose"><a class="header" href="#you-dont-need-docker-compose">You don't need <code>docker-compose</code></a></h2>
+<p><code>docker-compose</code> by default creates a <code>bridge</code> docker network named <code>&lt;directory&gt;_default</code> for connecting docker containers. To specify different network name:</p>
+<pre><code class="language-yaml">version: &quot;3.3&quot;
+services:
+  web:
+    image: registry/image_name:version
+    container_name: web
+    networks:
+      - skywalker 	
+
+  postgres:
+    image: registry/image_name:version
+    container_name: postgres
+    networks:
+      - skywalker 	
+  
+networks:
+  skywalker:
+    driver: bridge  	
+</code></pre>
+<p>This will create a <code>bridge</code> docker network named <code>skywalker_docker</code>.</p>
+<p>The reason why the containers are interconnected is that they share the same <code>docker bridged network</code>. The <code>docker-compose</code> yaml scripts can be easily rewritten using <code>docker network</code>.</p>
+<pre><code class="language-bash">docker network create -d bridge skywalker
+
+docker run -d --rm --network skywalker --name web registry/image_name:version
+docker run -d --rm --network skywalker --name postgres registry/image_name:version
+</code></pre>
+<p>And the <code>web</code> container can communicate the <code>postgres</code> container through <code>postgres:5432</code>.</p>
+<p><strong>Note:</strong> The <code>container_name</code> is the host inside the docker network.</p>
+<p>To inspect the network:</p>
+<pre><code class="language-bash">docker network inspect skywalker
+</code></pre>
+<p>Other useful commands can be found at <a href="https://docs.docker.com/engine/reference/commandline/network/">https://docs.docker.com/engine/reference/commandline/network/</a>.</p>
 
                     </main>
 
