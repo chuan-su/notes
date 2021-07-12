@@ -272,6 +272,15 @@ FROM google/cloud-sdk:$GCLOUD_SDK_VERSION
 <p>To build the image from another <code>Dockerfile</code>:</p>
 <pre><code class="language-bash">docker build --build-arg GCLOUD_SDK_VERSION=290.0.0 -f path/to/Dockefile .
 </code></pre>
+<p><em>Note</em>: The <code>ARG</code> declared before a <code>FROM</code> is outside of a build stage. So it can't be used in any instruction after a <code>FROM</code>. To use the default value of an <code>ARG</code>, re-redeclare it without a value:</p>
+<pre><code class="language-Dockefile">ARG GCLOUD_SDK_VERSION=286.0.0-alpine
+
+FROM google/cloud-sdk:$GCLOUD_SDK_VERSION
+
+ARG GCLOUD_SDK_VERSION
+RUN echo $GCLOUD_SDK_VERSION &gt; image_version
+</code></pre>
+<p>Reference: <a href="https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact">https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact</a></p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="volume"><a class="header" href="#volume">Volume</a></h1>
 <pre><code class="language-Dockerfile">VOLUME [&quot;/data&quot;]
 </code></pre>
