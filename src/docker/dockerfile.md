@@ -71,3 +71,17 @@ To build the image from another `Dockerfile`:
 ```bash
 docker build --build-arg GCLOUD_SDK_VERSION=290.0.0 -f path/to/Dockefile .
 ```
+
+*Note*: The `ARG` declared before a `FROM` is outside of a build stage. So it can't be used in any instruction after a `FROM`. To use the default value of an `ARG`, re-redeclare it without a value:
+
+
+```Dockefile
+ARG GCLOUD_SDK_VERSION=286.0.0-alpine
+
+FROM google/cloud-sdk:$GCLOUD_SDK_VERSION
+
+ARG GCLOUD_SDK_VERSION
+RUN echo $GCLOUD_SDK_VERSION > image_version
+```
+
+Reference: [https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact](https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact)
