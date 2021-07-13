@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li><li class="chapter-item expanded "><a href="docker/dockerrun.html"><strong aria-hidden="true">2.4.</strong> docker run</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -362,6 +362,12 @@ docker run -d --rm --network skywalker --name postgres registry/image_name:versi
 <pre><code class="language-bash">docker network inspect skywalker
 </code></pre>
 <p>Other useful commands can be found at <a href="https://docs.docker.com/engine/reference/commandline/network/">https://docs.docker.com/engine/reference/commandline/network/</a>.</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="docker-run"><a class="header" href="#docker-run">docker run</a></h1>
+<h2 id="docker-run-image-multiple-commands"><a class="header" href="#docker-run-image-multiple-commands">docker run <IMAGE> <MULTIPLE COMMANDS></a></h2>
+<pre><code class="language-bash">docker run - w /usr/src/app image /bin/bash -c &quot;mvn clean package;jar -jar app.jar&quot;
+</code></pre>
+<p><a href="https://docs.docker.com/engine/reference/commandline/run/#set-working-directory--w">Set working directory</a></p>
+<p>The <code>-w</code> lets the command being executed inside the given directory, here <code>/usr/src/app</code>. If the path does not exit it is created inside the container.</p>
 
                     </main>
 
