@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li><li class="chapter-item expanded "><a href="docker/dockerrun.html"><strong aria-hidden="true">2.4.</strong> docker run</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li><li class="chapter-item expanded "><a href="docker/dockerrun.html"><strong aria-hidden="true">2.4.</strong> docker run</a></li></ol></li><li class="chapter-item expanded "><a href="aws/index.html"><strong aria-hidden="true">3.</strong> AWS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="aws/iam.html"><strong aria-hidden="true">3.1.</strong> IAM</a></li><li class="chapter-item expanded "><a href="aws/iamrole.html"><strong aria-hidden="true">3.2.</strong> IAM role</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -368,6 +368,83 @@ docker run -d --rm --network skywalker --name postgres registry/image_name:versi
 </code></pre>
 <p><a href="https://docs.docker.com/engine/reference/commandline/run/#set-working-directory--w">Set working directory</a></p>
 <p>The <code>-w</code> lets the command being executed inside the given directory, here <code>/usr/src/app</code>. If the path does not exit it is created inside the container.</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="aws"><a class="header" href="#aws">AWS</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="iam"><a class="header" href="#iam">IAM</a></h1>
+<h2 id="iam-policies"><a class="header" href="#iam-policies">IAM Policies</a></h2>
+<ul>
+<li><code>Action</code> element refers to the kind of action requested (list, create, etc.);</li>
+<li><code>Resource</code> element refers to the particular AWS <strong>account resource</strong> that’s the target of the policy;</li>
+<li><code>Effect</code> element refers to the way IAM should react to a request.</li>
+</ul>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="iam-roles"><a class="header" href="#iam-roles">IAM Roles</a></h1>
+<p>An IAM role is not assigned to a user (by an admin). Rather, the IAM user assumes the role created by the admin.
+Therefore, the admin needs to ensure that the user (trusted entity) has the permission to perform the <code>sts:AssumeRole</code> operation (action).</p>
+<p>To provide such a permission, the admin needs to create an <code>IAM Policy</code> and attach it to the user or group.</p>
+<pre><code class="language-json">{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Sid&quot;: &quot;VisualEditor0&quot;,
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: &quot;sts:AssumeRole&quot;,
+            &quot;Resource&quot;: &quot;arn:aws:iam::&lt;admin_account-id&gt;:role/*&quot; // any roles in this account
+        }
+    ]
+}
+</code></pre>
+<p>With this IAM policy attached to the user, the user is now able to <strong>perform</strong> the <code>sts:AssumeRole</code> operationa. However, this does not mean that the user will get the role.</p>
+<p>It is like </p>
+<pre><code>You are now allowed to ask questions, but you may or may not get an answer&quot;.
+</code></pre>
+<p>Whether you will get the answer or not is determined by the <code>Trusted entity</code> which is covered below.</p>
+<h3 id="create-the-role"><a class="header" href="#create-the-role">Create the role</a></h3>
+<p>Next, we can create the IAM role.</p>
+<p>An IAM Role consists of the following core elements:</p>
+<ul>
+<li>
+<p><strong>Permission</strong>
+specifies what account resources can be accessed and what actions can be taken, which is exactly what the IAM Policy does. For instance: adding <code>AmazonS3FullAccess</code> to the role permissions will allow the user who has successfully assumed this role to have full access to <code>S3</code>.</p>
+</li>
+<li>
+<p><strong>Trusted Entity</strong>
+specifies what entitiy can assume <strong>this role</strong> (Don't be confused with the IAM Policy <code>sts:AssumeRole</code> action above).</p>
+</li>
+</ul>
+<pre><code>```json
+{
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    {
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Principal&quot;: {
+		&quot;AWS&quot;: &quot;arn:aws:iam::&lt;user_account-id&gt;:root&quot; // the user who performs the AssumeRole action
+      },
+      &quot;Action&quot;: &quot;sts:AssumeRole&quot;,
+      &quot;Condition&quot;: {}
+    }
+  ]
+}
+```
+</code></pre>
+<h3 id="assume-the-role"><a class="header" href="#assume-the-role">Assume the role</a></h3>
+<p>Before we assume the role, let's first verify that we don't have access to <code>S3</code>.</p>
+<pre><code class="language-bash">aws s3 ls
+</code></pre>
+<p>Next, let's assume the role <code>s3fullaccess-user1</code> created above.</p>
+<p>One way is to add a <code>profile</code> to <code>~/.aws/config</code>, as shown below.
+For simplicity, we use the role name <code>s3fullaccess-user1</code> as the <code>[profile_name]</code>.</p>
+<pre><code>[s3fullaccess-user1]
+role_arn=arn:aws:iam::&lt;admin_account-id&gt;:role/s3fullaccess-user1
+source_profile=account1
+</code></pre>
+<p>Now if we invoke the command with the <code>s3fullaccess-user1</code> profile, we will be able to list the buckets in <code>S3</code>.</p>
+<pre><code class="language-bash">aws s3 ls --profile s3fullaccess-user1
+</code></pre>
+<p>Read more about the how to config <code>awscli</code> to use an IAM role <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html">here</a>.</p>
+<p>Anothe way to consume the IAM role is to use <code>awscli</code>:</p>
+<pre><code class="language-bash">aws sts assume-role --role-arn &quot;arn:aws:iam::&lt;admin_account-id&gt;:role/s3fullaccess-user1&quot; --role-session-name AWSCLI-Session
+</code></pre>
+<p>A full example for assuming IAM role using <code>awscli</code> is <a href="https://aws.amazon.com/premiumsupport/knowledge-center/iam-assume-role-cli/">here</a></p>
 
                     </main>
 
