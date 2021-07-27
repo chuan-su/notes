@@ -1,6 +1,6 @@
 # VPC
 
-![vpc](/img/aws-vpc.png)
+![vpc](../img/aws-vpc.svg)
 
 Reference
 
