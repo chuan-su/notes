@@ -65,9 +65,11 @@ We need to create and mount the file systems for each of the 2 partitions:
 Now we have void linux installed. We need to [perform a system update](https://docs.voidlinux.org/xbps/index.html#updating) for the first time:
 
 ```bash
+sudo xbps-install -u xbps
 sudo xbps-install -Su
 ```
 
+<br>
 Reference
 
 [https://docs.voidlinux.org/installation/live-images/guide.html](https://docs.voidlinux.org/installation/live-images/guide.html)
