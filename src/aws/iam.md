@@ -8,6 +8,10 @@
 
 ## IAM Roles
 
+IAM roles enables cross account temporary access for resources.
+
+![iamrole](../img/aws-iamrole.svg)
+
 An IAM role is not assigned to a user (by an admin). Rather, the IAM user assumes the role created by the admin.
 Therefore, the admin needs to ensure that the user (trusted entity) has the permission to perform the `sts:AssumeRole` operation (action).
 
