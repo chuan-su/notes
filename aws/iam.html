@@ -173,6 +173,8 @@
 <li><code>Effect</code> element refers to the way IAM should react to a request.</li>
 </ul>
 <h2 id="iam-roles"><a class="header" href="#iam-roles">IAM Roles</a></h2>
+<p>IAM roles enables cross account temporary access for resources.</p>
+<p><img src="../img/aws-iamrole.svg" alt="iamrole" /></p>
 <p>An IAM role is not assigned to a user (by an admin). Rather, the IAM user assumes the role created by the admin.
 Therefore, the admin needs to ensure that the user (trusted entity) has the permission to perform the <code>sts:AssumeRole</code> operation (action).</p>
 <p>To provide such a permission, the admin needs to create an <code>IAM Policy</code> and attach it to the user or group.</p>
