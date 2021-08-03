@@ -13,6 +13,7 @@
 - [AWS](aws/README.md)
     - [EBS](aws/ebs.md)
     - [IAM](aws/iam.md)
+      - [IAM Role](aws/iamrole.md)
     - [VPC](aws/vpc.md)
 - [OS](os/README.md)
     - [Volume](os/volume.md)
