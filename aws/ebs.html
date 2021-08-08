@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="../java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="../docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="../docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="../docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li><li class="chapter-item expanded "><a href="../docker/dockerrun.html"><strong aria-hidden="true">2.4.</strong> docker run</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/index.html"><strong aria-hidden="true">3.</strong> AWS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/ebs.html" class="active"><strong aria-hidden="true">3.1.</strong> EBS</a></li><li class="chapter-item expanded "><a href="../aws/iam.html"><strong aria-hidden="true">3.2.</strong> IAM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/iamrole.html"><strong aria-hidden="true">3.2.1.</strong> IAM Role</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/vpc.html"><strong aria-hidden="true">3.3.</strong> VPC</a></li></ol></li><li class="chapter-item expanded "><a href="../os/index.html"><strong aria-hidden="true">4.</strong> OS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../os/volume.html"><strong aria-hidden="true">4.1.</strong> Volume</a></li><li class="chapter-item expanded "><a href="../os/void.html"><strong aria-hidden="true">4.2.</strong> Void Linux</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="../java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="../docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="../docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="../docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li><li class="chapter-item expanded "><a href="../docker/dockerrun.html"><strong aria-hidden="true">2.4.</strong> docker run</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/index.html"><strong aria-hidden="true">3.</strong> AWS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/ebs.html" class="active"><strong aria-hidden="true">3.1.</strong> EBS</a></li><li class="chapter-item expanded "><a href="../aws/rds.html"><strong aria-hidden="true">3.2.</strong> RDS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/aurora.html"><strong aria-hidden="true">3.2.1.</strong> Aurora</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/iam.html"><strong aria-hidden="true">3.3.</strong> IAM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/iamrole.html"><strong aria-hidden="true">3.3.1.</strong> IAM Role</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/vpc.html"><strong aria-hidden="true">3.4.</strong> VPC</a></li><li class="chapter-item expanded "><a href="../aws/elb.html"><strong aria-hidden="true">3.5.</strong> ELB</a></li></ol></li><li class="chapter-item expanded "><a href="../linux/index.html"><strong aria-hidden="true">4.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/volume.html"><strong aria-hidden="true">4.1.</strong> Volume</a></li><li class="chapter-item expanded "><a href="../linux/void.html"><strong aria-hidden="true">4.2.</strong> Void Linux</a></li><li class="chapter-item expanded "><a href="../linux/netcat.html"><strong aria-hidden="true">4.3.</strong> netcat</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -169,6 +169,23 @@
 <p><img src="../img/aws-ebs.svg" alt="ebs" /></p>
 <p>Reference</p>
 <p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html</a></p>
+<h2 id="iops-and-disk-throughput"><a class="header" href="#iops-and-disk-throughput">IOPS and Disk Throughput</a></h2>
+<p>AWS measures storage performance in <em>input/output operations per second</em>.</p>
+<p>MySQL and MariaDB have a page size of 16 KB. Hence, writing 16 KB of data to disk would constitute one I/O operation.
+Suppose your MySQL database needs to read 102,400 KB (100 MB) of data every second. Then the database needs to be able to read <code>102400 / 16 = 6400</code> 16 KB data, which requires your storage to be able to sustain 6400 IOPS.</p>
+<p>Next consideration is the disk throughput - the data transfer rate.</p>
+<p>Suppose you are running a MySQL, to sustain 2,000 Mbsp of disk throughput you need to divide the bandwidth by the page size, as follows:</p>
+<pre><code class="language-ruby">16 KB * 8 = 128 Kb
+128 Kb = 0.128 Mb
+2,000 Mbsp / 0.128 Mb = 15,625 IOPS
+</code></pre>
+<h3 id="general-ssd-storage-gp2"><a class="header" href="#general-ssd-storage-gp2">General SSD Storage (gp2)</a></h3>
+<p>For each gigabyte of data that you allocate to a volume, RDS allocates that volume a baseline performance of three IOPS, up to a total of 16,000 IOPS per volume. </p>
+<p>A 20 GB volume would get 60 IOPS, whereas a 100 GB volume would get 300 IOPS. A 5,334 GB volume would get 16,000 IOPS. This means that the larger your volume, the better performance you’ll get. Thus the ratio of storage in gigabytes to IOPS is <code>3:1</code>.</p>
+<p>To achieve 2,000 Mbps disk throughput to a volume, it would need 16,000 IOPS allo- cated. Note that you must specify provisioned IOPS in increments of 1,000. Also, as stated earlier, this is the maximum number of IOPS possible with gp2. To achieve this many IOPS, your volume would have to be 5,334 GB or about 5.33 TB.</p>
+<h3 id="provisioned-iops-ssd-io1"><a class="header" href="#provisioned-iops-ssd-io1">Provisioned IOPS SSD (io1)</a></h3>
+<p>The ratio of storage in gigabytes to IOPS must be at least <code>50:1</code>. For example, if you want 32,000 IOPS, you must provision at least 640 GB of storage.</p>
+<p>You can provision up to 64,000 IOPS per io1 volume.</p>
 
                     </main>
 
@@ -181,7 +198,7 @@
                         
 
                         
-                            <a rel="next" href="../aws/iam.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../aws/rds.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -199,7 +216,7 @@
                 
 
                 
-                    <a rel="next" href="../aws/iam.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../aws/rds.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

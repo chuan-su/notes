@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Volume</title>
+        <title>netcat</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="../java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="../docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="../docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="../docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li><li class="chapter-item expanded "><a href="../docker/dockerrun.html"><strong aria-hidden="true">2.4.</strong> docker run</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/index.html"><strong aria-hidden="true">3.</strong> AWS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/ebs.html"><strong aria-hidden="true">3.1.</strong> EBS</a></li><li class="chapter-item expanded "><a href="../aws/iam.html"><strong aria-hidden="true">3.2.</strong> IAM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/iamrole.html"><strong aria-hidden="true">3.2.1.</strong> IAM Role</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/vpc.html"><strong aria-hidden="true">3.3.</strong> VPC</a></li></ol></li><li class="chapter-item expanded "><a href="../os/index.html"><strong aria-hidden="true">4.</strong> OS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../os/volume.html" class="active"><strong aria-hidden="true">4.1.</strong> Volume</a></li><li class="chapter-item expanded "><a href="../os/void.html"><strong aria-hidden="true">4.2.</strong> Void Linux</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="../java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="../docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="../docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="../docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li><li class="chapter-item expanded "><a href="../docker/dockerrun.html"><strong aria-hidden="true">2.4.</strong> docker run</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/index.html"><strong aria-hidden="true">3.</strong> AWS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/ebs.html"><strong aria-hidden="true">3.1.</strong> EBS</a></li><li class="chapter-item expanded "><a href="../aws/rds.html"><strong aria-hidden="true">3.2.</strong> RDS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/aurora.html"><strong aria-hidden="true">3.2.1.</strong> Aurora</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/iam.html"><strong aria-hidden="true">3.3.</strong> IAM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/iamrole.html"><strong aria-hidden="true">3.3.1.</strong> IAM Role</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/vpc.html"><strong aria-hidden="true">3.4.</strong> VPC</a></li><li class="chapter-item expanded "><a href="../aws/elb.html"><strong aria-hidden="true">3.5.</strong> ELB</a></li></ol></li><li class="chapter-item expanded "><a href="../linux/index.html"><strong aria-hidden="true">4.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/volume.html"><strong aria-hidden="true">4.1.</strong> Volume</a></li><li class="chapter-item expanded "><a href="../linux/void.html"><strong aria-hidden="true">4.2.</strong> Void Linux</a></li><li class="chapter-item expanded "><a href="../linux/netcat.html" class="active"><strong aria-hidden="true">4.3.</strong> netcat</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -165,67 +165,25 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="volume"><a class="header" href="#volume">Volume</a></h2>
-<p>Files are stored on random-access storage devices, including hard disks, solid-state disks.</p>
-<p>Files can only be stored on a storage device with a file system created. Any entity containing a file system is generally known as a volume.</p>
-<p>The volume may be partition or a whole device. Each volume that contains a file system must also contain information about the files in the system. This information is kept in entries in a <strong>device directory</strong> that records informtation -- such as name, location, size, and type -- for all files on that volume.</p>
-<p><img src="../img/os-volume.svg" alt="volume" /></p>
-<h3 id="volume-mounting"><a class="header" href="#volume-mounting">Volume Mounting</a></h3>
-<p>Just as a file must be opened before it is used, a file system (volume) must be mounted beforeit can be availble on the operating system.</p>
-<p>The mount procedure is straightforward. The operating system is given the name of the device and the <strong>mount point</strong> -- where the file system is to be attached.</p>
-<h4 id="example-aws-ebs-volume"><a class="header" href="#example-aws-ebs-volume">Example (AWS EBS volume)</a></h4>
-<p>When we launch an AWS EC2 instance, we can add additional storage, by attaching additional <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes.html">EBS volumes</a>.</p>
-<table><thead><tr><th>Volume Type</th><th>Device</th><th>Snapshot</th><th>Size(GiB)</th><th>Volume Type</th></tr></thead><tbody>
-<tr><td>Root</td><td>/dev/xvda</td><td>snap-0ee8a4a337cf9d029</td><td>128</td><td>SSD</td></tr>
-<tr><td>EBS</td><td>/dev/xvdb</td><td></td><td>8</td><td>SSD</td></tr>
-</tbody></table>
-<p>The EBS storage attached to the EC2 instance is not ready to be used since it doesn't contain a file system. We therefore need to create a file system on this storage device and mount it onto the EC2 instance OS.</p>
-<p>We could <em>ssh</em> into the launched EC2 instance and issue the commands below, in order to store files into this EBS volume.</p>
-<pre><code class="language-bash">$ lsblk
-NAME     MAJ:MIN RM  SIZE RO  TYPE MOUNTPOINT
-xvda     202:0    0  128G  0  disk
-|_xvda1  202:1    0  128G  0  part /
-xvdb     202:16   0    8G  0  disk
-$ sudo su
-$ file -s /dev/xvdb
-/dev/xcdb: data
-$ mkfs -t xfs /dev/xvdb
-meta-data=/dev/xvdb   isize=512 agcount=4 agsize=524288 blks
-.....
-$ file -s /dev/xvdb
-/dev/xvdb: SGI XFS filesystem data (blks 4096, inosz 512, v2 dirs)
-$ makedir /data
-$ mount /dev/xvdb /data
-$ cd /data
-$ touch test.txt
+                        <h1 id="netcat"><a class="header" href="#netcat">netcat</a></h1>
+<p>To scan a TCP port using <code>netcat</code>, use: </p>
+<pre><code class="language-bash">nc -zv 13.49.227.25 80
 </code></pre>
-<h4 id="example-install-void-linux"><a class="header" href="#example-install-void-linux">Example (Install Void Linux)</a></h4>
-<p>When installing <a href="https://docs.voidlinux.org/installation/live-images/guide.html">Void Linux</a>, the essential parts are to partition the computer disk and create file systems. </p>
-<p>Suppose the device name for the computer disk is <code>/dev/sda</code> and we need to partition the disk and create the file system for each partition as:</p>
-<style>
-table {
-  margin: 0!important;
-}
-</style>
-<table><thead><tr><th align="left">Device</th><th align="left">Size</th><th align="left">Type</th><th align="left">Mount point</th><th align="left">File system type</th></tr></thead><tbody>
-<tr><td align="left">/dev/sda1</td><td align="left">100M</td><td align="left">BIOS boot</td><td align="left">/boot/efi</td><td align="left">vfat  FAT32</td></tr>
-<tr><td align="left">/dev/sda2</td><td align="left">298G</td><td align="left">Linux filesystem</td><td align="left">/</td><td align="left">btrfs Oracle's Btrfs</td></tr>
-</tbody></table>
+<ul>
+<li>The <code>-z</code> option is for scanning without sending any data.</li>
+<li>The <code>-v</code> option is to print verbose output.</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../os/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../linux/void.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../os/void.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -235,15 +193,11 @@ table {
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../os/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../linux/void.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a rel="next" href="../os/void.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
