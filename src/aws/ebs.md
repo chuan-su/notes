@@ -8,7 +8,7 @@ Reference
 
 #### Snapshots Encryption
 
-![ebs-snapshosts](../img/aws-ebs-snapshots)
+![ebs-snapshosts](../img/aws-ebs-snapshots.svg)
 
 ## IOPS and Disk Throughput
 

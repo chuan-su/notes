@@ -18,6 +18,7 @@
       - [IAM Role](aws/iamrole.md)
     - [VPC](aws/vpc.md)
     - [ELB](aws/elb.md)
+    - [Reliability](aws/reliability.md)
 - [Linux](linux/README.md)
     - [Volume](linux/volume.md)
     - [Void Linux](linux/void.md)

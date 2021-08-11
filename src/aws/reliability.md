@@ -5,11 +5,11 @@
 
 You can use Route 53 [failover routing](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-failover) policy to route traffic to the secondary cluster deployed in another region in case outage of the primary cluster.
 
-![failover](../img/aws-53-failover)
+![failover](../img/aws-53-failover.svg)
 
 As Elastic Load Blancer does not support RDS instances, you can, however, use Route 53 [weighted routing](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted) policy to distribute traffic across the RDS Read Replicas. In case of a Read Replica health-check failure, Route 53 weighted record will exlcude those adresses in its reponse to a DNS query.
 
-![weighted](../img/aws-53-weighted)
+![weighted](../img/aws-53-weighted.svg)
 
 Reference
 - [Scale RDS instances](https://aws.amazon.com/blogs/database/scaling-your-amazon-rds-instance-vertically-and-horizontally/)
