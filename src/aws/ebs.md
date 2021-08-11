@@ -6,6 +6,10 @@ Reference
 
 [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html)
 
+#### Snapshots Encryption
+
+![ebs-snapshosts](../img/aws-ebs-snapshots)
+
 ## IOPS and Disk Throughput
 
 AWS measures storage performance in *input/output operations per second*.
