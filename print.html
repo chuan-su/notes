@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li><li class="chapter-item expanded "><a href="docker/dockerrun.html"><strong aria-hidden="true">2.4.</strong> docker run</a></li></ol></li><li class="chapter-item expanded "><a href="aws/index.html"><strong aria-hidden="true">3.</strong> AWS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="aws/ebs.html"><strong aria-hidden="true">3.1.</strong> EBS</a></li><li class="chapter-item expanded "><a href="aws/rds.html"><strong aria-hidden="true">3.2.</strong> RDS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="aws/aurora.html"><strong aria-hidden="true">3.2.1.</strong> Aurora</a></li></ol></li><li class="chapter-item expanded "><a href="aws/iam.html"><strong aria-hidden="true">3.3.</strong> IAM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="aws/iamrole.html"><strong aria-hidden="true">3.3.1.</strong> IAM Role</a></li></ol></li><li class="chapter-item expanded "><a href="aws/vpc.html"><strong aria-hidden="true">3.4.</strong> VPC</a></li><li class="chapter-item expanded "><a href="aws/elb.html"><strong aria-hidden="true">3.5.</strong> ELB</a></li><li class="chapter-item expanded "><a href="aws/reliability.html"><strong aria-hidden="true">3.6.</strong> Reliability</a></li></ol></li><li class="chapter-item expanded "><a href="linux/index.html"><strong aria-hidden="true">4.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="linux/volume.html"><strong aria-hidden="true">4.1.</strong> Volume</a></li><li class="chapter-item expanded "><a href="linux/void.html"><strong aria-hidden="true">4.2.</strong> Void Linux</a></li><li class="chapter-item expanded "><a href="linux/netcat.html"><strong aria-hidden="true">4.3.</strong> netcat</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li><li class="chapter-item expanded "><a href="docker/dockerrun.html"><strong aria-hidden="true">2.4.</strong> docker run</a></li></ol></li><li class="chapter-item expanded "><a href="aws/index.html"><strong aria-hidden="true">3.</strong> AWS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="aws/ebs.html"><strong aria-hidden="true">3.1.</strong> EBS</a></li><li class="chapter-item expanded "><a href="aws/iam.html"><strong aria-hidden="true">3.2.</strong> IAM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="aws/iamrole.html"><strong aria-hidden="true">3.2.1.</strong> IAM Role</a></li></ol></li><li class="chapter-item expanded "><a href="aws/vpc.html"><strong aria-hidden="true">3.3.</strong> VPC</a></li><li class="chapter-item expanded "><a href="aws/elb.html"><strong aria-hidden="true">3.4.</strong> ELB</a></li><li class="chapter-item expanded "><a href="aws/route53.html"><strong aria-hidden="true">3.5.</strong> Route 53</a></li><li class="chapter-item expanded "><a href="aws/storage.html"><strong aria-hidden="true">3.6.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="linux/index.html"><strong aria-hidden="true">4.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="linux/volume.html"><strong aria-hidden="true">4.1.</strong> Volume</a></li><li class="chapter-item expanded "><a href="linux/void.html"><strong aria-hidden="true">4.2.</strong> Void Linux</a></li><li class="chapter-item expanded "><a href="linux/netcat.html"><strong aria-hidden="true">4.3.</strong> netcat</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -392,46 +392,6 @@ Suppose your MySQL database needs to read 102,400 KB (100 MB) of data every seco
 <h3 id="provisioned-iops-ssd-io1"><a class="header" href="#provisioned-iops-ssd-io1">Provisioned IOPS SSD (io1)</a></h3>
 <p>The ratio of storage in gigabytes to IOPS must be at least <code>50:1</code>. For example, if you want 32,000 IOPS, you must provision at least 640 GB of storage.</p>
 <p>You can provision up to 64,000 IOPS per io1 volume.</p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rds"><a class="header" href="#rds">RDS</a></h1>
-<h2 id="multi-az-deployments"><a class="header" href="#multi-az-deployments">Multi-AZ Deployments</a></h2>
-<p>Multi-AZ deployment provides a <em>standby database instance</em> in a different availibity zone that the <em>primary database</em> instance resides.</p>
-<p>RDS synchronously replicates data from the primary to the standby instance. And if the primray instance experiences an outage, it will fail over to the standby instance. </p>
-<p><strong>Note that</strong> in the multi-AZ deployment, all instances resides in the same region. And the standby instance is not a read replica and cannot serve read traffic.</p>
-<h2 id="read-replica"><a class="header" href="#read-replica">Read Replica</a></h2>
-<p>With Amazon RDS, you can create a read replica of the primary database instance in a different AZ even different region.
-However, creating a cross-region read replica isn't supported for SQL Server on Amazon RDS.</p>
-<p>When creating a read replica, you must enable automatic backups on the source DB instance by setting the backup retention period to
-a value other than 0.</p>
-<p>You can have up to 5 replicas and each read replica will have its own DNS endpoint.</p>
-<p>Replicas can be promoted to their own standalone database, but this breaks the replication. 
-Moreover, no automatic failover, if primary database fails you must manually update urls to point at the newly promoted database.</p>
-<h3 id="compare"><a class="header" href="#compare">Compare</a></h3>
-<table><thead><tr><th align="left">Mutil-AZ Deployments</th><th align="left">Read Replicas</th></tr></thead><tbody>
-<tr><td align="left">Synchronous replication - highly durable</td><td align="left">Asynchronous replication - highly scalable</td></tr>
-<tr><td align="left">Only database engine on primary instance is active</td><td align="left">All read replicas are accessible and can be used for read scaling</td></tr>
-<tr><td align="left">Automated backups are taken from standby instance</td><td align="left">No backups configured by default</td></tr>
-<tr><td align="left">Always span at least 2 Availability Zones within a single region</td><td align="left">Can be within Availability Zone, Cross-AZ, or Cross-Region</td></tr>
-<tr><td align="left">Database engine version upgrades happen on primary instance</td><td align="left">Database engine version upgrade is independent from source instance</td></tr>
-<tr><td align="left">Automatic failover to standby when a problem is detected</td><td align="left">can be manually promoted to a standalone database instance</td></tr>
-</tbody></table>
-<h2 id="point-in-time-recovery"><a class="header" href="#point-in-time-recovery">Point-in-time recovery</a></h2>
-<p>Enabling automatic backups enables point-in-time recovery, which archives database change logs to S3 every 5 minutes.</p>
-<p>RDS keeps automated snapshots for a limited period of time and then deletes them. You can choose a retention period between one day and 35 days. 
-The default is seven days. To disable automated snapshots, set the retention period to 0. </p>
-<p>Note that disabling automated snapshots immediately deletes all existing automated snapshots and disables point-in-time recovery. Also, if you change the retention period from 0 to any other value, it will trigger an immediate snapshot.</p>
-<p>Reference</p>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html">Working with read replicas</a></li>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.XRgn.html">Cross-region read replicas</a></li>
-<li><a href="https://aws.amazon.com/rds/features/read-replicas/">Read replicas, Mutil-AZ deployments, and multi-region deployments</a></li>
-</ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="aurora"><a class="header" href="#aurora">Aurora</a></h1>
-<p>Reference</p>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.html">Aurora DB cluster</a></li>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html">Aurora Connection</a></li>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Replication.html">Aurora Replication</a></li>
-</ul>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="iam"><a class="header" href="#iam">IAM</a></h1>
 <p>An AWS account has two types of users, root user and IAM user. And they are belong to the same AWS account. When we login onto AWS management console, both root user and IAM user share the same account ID.</p>
 <h2 id="iam-user-policies"><a class="header" href="#iam-user-policies">IAM user policies</a></h2>
@@ -575,9 +535,7 @@ source_profile=account1
 <li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html">Application Load Balancer</a></li>
 <li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html">Network Load Balancer</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="reliability-pillar"><a class="header" href="#reliability-pillar">Reliability Pillar</a></h1>
-<h2 id="network-1"><a class="header" href="#network-1">Network</a></h2>
-<h3 id="route-53"><a class="header" href="#route-53">Route 53</a></h3>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="route-53"><a class="header" href="#route-53">Route 53</a></h1>
 <p>You can use Route 53 <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-failover">failover routing</a> policy to route traffic to the secondary cluster deployed in another region in case outage of the primary cluster.</p>
 <p><img src="aws/../img/aws-53-failover.svg" alt="failover" /></p>
 <p>As Elastic Load Blancer does not support RDS instances, you can, however, use Route 53 <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted">weighted routing</a> policy to distribute traffic across the RDS Read Replicas. In case of a Read Replica health-check failure, Route 53 weighted record will exlcude those adresses in its reponse to a DNS query.</p>
@@ -589,37 +547,66 @@ source_profile=account1
 </ul>
 <p>Note that <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html">a reader endpoint for an Aurora DB cluster provides load-balancing support for read-only connections to the DB cluster.</a></p>
 <p>Read more about <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-aws-resources.html">Routing internet traffic to AWS resources using Route 53</a></p>
-<h2 id="storage"><a class="header" href="#storage">Storage</a></h2>
-<h3 id="replication"><a class="header" href="#replication">Replication</a></h3>
-<h4 id="s3"><a class="header" href="#s3">S3</a></h4>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="storage"><a class="header" href="#storage">Storage</a></h1>
+<h2 id="replication--backup"><a class="header" href="#replication--backup">Replication &amp; Backup</a></h2>
+<h3 id="s3"><a class="header" href="#s3">S3</a></h3>
 <p>All S3 storage classes except <code>One Zone-Infrequent Access</code> distribute objects across multiple
 availability zones.</p>
-<p>To protect your data against multiple availability zone failures or the failure of an
-entire region you can enable cross-region replication between a source bucket in one
-region and destination bucket in another.</p>
-<p>Note that cross-region replication requires versioning to be enabled on both buckets. Also, if the source bucket get deleted,the target bucket is NOT deleted. For replicating object deletion, you can <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/delete-marker-replication.html">enable delete marker replication</a></p>
-<h4 id="ebs-volume"><a class="header" href="#ebs-volume">EBS Volume</a></h4>
-<p>EBS automatically replicates volumes across multiple availability zones in a region so that
-they’re resilient to a single availability zone failure.</p>
-<p>You can use Amazon Data Lifecycle Manager to automatically create a snapshot for
-you at regular intervals. To use the Amazon Data Lifecycle Manager, you create a Snapshot
-Lifecycle Policy and specify an interval of up to 24 hours, as well as a snapshot creation
-time. You also must specify the number of automatic snapshots to retain, up to 1,000
+<p>You can also enable cross-region replication between a source bucket in one region and destination bucket in another.
+Note that cross-region replication requires versioning to be enabled on both buckets. Note that cross-region replication does not apply to existing objects. Also, if the source bucket get deleted,the target bucket is NOT deleted. For replicating object deletion, you can <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/delete-marker-replication.html">enable delete marker replication</a></p>
+<p>In addtion to <a href="https://aws.amazon.com/about-aws/whats-new/2018/11/s3-intelligent-tiering/">S3 Intelligent Tier Storage</a> that moves objects that have not been accessed for 30 consecutive days to the infrequent access tier. You can also manually configure <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html">lifecycle rules</a> for a bucket that will automatically transition an object’s storage class after a set number of days.</p>
+<h3 id="ebs-volume"><a class="header" href="#ebs-volume">EBS Volume</a></h3>
+<p>EBS automatically replicates volumes across multiple availability zones in a region.</p>
+<p>You can use <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html">Amazon Data Lifecycle Manager</a> to automatically create a snapshot for you at regular intervals. To use the Amazon Data Lifecycle Manager, you create a Snapshot Lifecycle Policy and specify an interval of up to 24 hours, as well as a snapshot creation time. You also must specify the number of automatic snapshots to retain, up to 1,000
 snapshots. You can also enable <code>cross-region</code> copy and cross-account sharing.</p>
 <h3 id="efs"><a class="header" href="#efs">EFS</a></h3>
-<p>EFS filesystems are stored across multiple zones in a region, allowing you to withstand an availability zone failure.</p>
-<p>To protect against data loss and corruption, you can back up individual files to an S3
-bucket or another EFS filesystem in the same region. You can also use the <a href="https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html">AWS Backup Service</a> to schedule incremental backups of your EFS filesystem</p>
+<p>EFS filesystems are stored across multiple zones in a region.</p>
+<p>To protect against data loss and corruption, you can back up individual files to an S3 bucket or another EFS filesystem in the same region. 
+You can also use the <a href="https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html">AWS Backup Service</a> to schedule incremental backups of your EFS filesystem</p>
 <h3 id="dynamodb"><a class="header" href="#dynamodb">DynamoDB</a></h3>
-<p>DynamoDB stores tables across multiple availability zones, which along with giving
-you low-latency performance provides additional protection against an availability zone
-failure.</p>
-<p>To replicate DynamoDB table to different region, you can use <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html">DynamoDB global tables</a>. </p>
-<h3 id="rds-1"><a class="header" href="#rds-1">RDS</a></h3>
-<h3 id="aurora-1"><a class="header" href="#aurora-1">Aurora</a></h3>
-<h3 id="backup--recovery"><a class="header" href="#backup--recovery">Backup &amp; Recovery</a></h3>
-<h2 id="elastic-cache--dax"><a class="header" href="#elastic-cache--dax">Elastic Cache &amp; DAX</a></h2>
-<h2 id="shading"><a class="header" href="#shading">Shading</a></h2>
+<p>DynamoDB stores tables across multiple availability zones.
+To replicate DynamoDB table to different region, you can use <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html">DynamoDB global tables</a>. </p>
+<p>You can also configure point-in-time recovery to automatically take backups of your DynamoDB tables.
+Point-in-time recovery lets you restore your DynamoDB tables to any point in time from 35 days until 5 minutes before the current time.</p>
+<h3 id="rds"><a class="header" href="#rds">RDS</a></h3>
+<h4 id="multi-az-deployments"><a class="header" href="#multi-az-deployments">Multi-AZ Deployments</a></h4>
+<p>Multi-AZ deployment provides a <em>standby database instance</em> in a different availibity zone that the <em>primary database</em> instance resides.</p>
+<p>RDS synchronously replicates data from the primary to the standby instance. And if the primray instance experiences an outage, it will fail over to the standby instance. </p>
+<p><strong>Note that</strong> in the multi-AZ deployment, all instances resides in the same region. And the standby instance is not a read replica and cannot serve read traffic.</p>
+<h4 id="read-replica"><a class="header" href="#read-replica">Read Replica</a></h4>
+<p>With Amazon RDS, you can create a read replica of the primary database instance in a different AZ even different region.
+However, creating a cross-region read replica isn't supported for SQL Server on Amazon RDS.</p>
+<p>When creating a read replica, you must enable automatic backups on the source DB instance by setting the backup retention period to
+a value other than 0.</p>
+<p>You can have up to 5 replicas and each read replica will have its own DNS endpoint.</p>
+<p>Replicas can be promoted to their own standalone database, but this breaks the replication. 
+Moreover, no automatic failover, if primary database fails you must manually update urls to point at the newly promoted database.</p>
+<h5 id="compare"><a class="header" href="#compare">Compare</a></h5>
+<table><thead><tr><th align="left">Mutil-AZ Deployments</th><th align="left">Read Replicas</th></tr></thead><tbody>
+<tr><td align="left">Synchronous replication - highly durable</td><td align="left">Asynchronous replication - highly scalable</td></tr>
+<tr><td align="left">Only database engine on primary instance is active</td><td align="left">All read replicas are accessible and can be used for read scaling</td></tr>
+<tr><td align="left">Automated backups are taken from standby instance</td><td align="left">No backups configured by default</td></tr>
+<tr><td align="left">Always span at least 2 Availability Zones within a single region</td><td align="left">Can be within Availability Zone, Cross-AZ, or Cross-Region</td></tr>
+<tr><td align="left">Database engine version upgrades happen on primary instance</td><td align="left">Database engine version upgrade is independent from source instance</td></tr>
+<tr><td align="left">Automatic failover to standby when a problem is detected</td><td align="left">can be manually promoted to a standalone database instance</td></tr>
+</tbody></table>
+<h4 id="point-in-time-recovery"><a class="header" href="#point-in-time-recovery">Point-in-time recovery</a></h4>
+<p>Enabling automatic backups enables point-in-time recovery, which archives database change logs to S3 every 5 minutes.</p>
+<p>RDS keeps automated snapshots for a limited period of time and then deletes them. You can choose a retention period between one day and 35 days. 
+The default is seven days. To disable automated snapshots, set the retention period to 0. </p>
+<p>Note that disabling automated snapshots immediately deletes all existing automated snapshots and disables point-in-time recovery. Also, if you change the retention period from 0 to any other value, it will trigger an immediate snapshot.</p>
+<p>Reference</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html">Working with read replicas</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.XRgn.html">Cross-region read replicas</a></li>
+<li><a href="https://aws.amazon.com/rds/features/read-replicas/">Read replicas, Mutil-AZ deployments, and multi-region deployments</a></li>
+</ul>
+<h3 id="aurora"><a class="header" href="#aurora">Aurora</a></h3>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.html">Aurora DB cluster</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html">Aurora Connection</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Replication.html">Aurora Replication</a></li>
+</ul>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="linux"><a class="header" href="#linux">Linux</a></h1>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h2 id="volume-1"><a class="header" href="#volume-1">Volume</a></h2>
 <p>Files are stored on random-access storage devices, including hard disks, solid-state disks.</p>
