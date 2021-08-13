@@ -1,6 +1,6 @@
 # Route 53
 
-You can use Route 53 [failover routing](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-failover) policy to route traffic to the secondary cluster deployed in another region in case outage of the primary cluster.
+You can use Route 53 [failover routing](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-failover) policy to route traffic to the secondary cluster deployed in another region in case outage of the primary cluster. Note that `Simple Routing Policy` does not support health-checks.
 
 ![failover](../img/aws-53-failover.svg)
 
@@ -15,5 +15,7 @@ Reference
 
 Note that [a reader endpoint for an Aurora DB cluster provides load-balancing support for read-only connections to the DB cluster.](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html)
 
-Read more about [Routing internet traffic to AWS resources using Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-aws-resources.html)
+Read more
 
+- [Routing internet traffic to AWS resources using Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-aws-resources.html)
+- [Cross-Region DNS-Based Load Balancing and Failover](https://docs.aws.amazon.com/whitepapers/latest/real-time-communication-on-aws/cross-region-dns-based-load-balancing-and-failover.html)

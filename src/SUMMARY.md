@@ -18,6 +18,7 @@
     - [ELB](aws/elb.md)
     - [Route 53](aws/route53.md)
     - [Storage](aws/storage.md)
+    - [ElastiCache](aws/elasticache.md)
 - [Linux](linux/README.md)
     - [Volume](linux/volume.md)
     - [Void Linux](linux/void.md)
