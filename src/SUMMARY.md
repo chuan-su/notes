@@ -19,6 +19,7 @@
     - [Route 53](aws/route53.md)
     - [Storage](aws/storage.md)
     - [ElastiCache](aws/elasticache.md)
+    - [Security](aws/security.md)
 - [Linux](linux/README.md)
     - [Volume](linux/volume.md)
     - [Void Linux](linux/void.md)
