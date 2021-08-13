@@ -524,15 +524,15 @@ source_profile=account1
 <p><img src="aws/../img/aws-vpc.svg" alt="vpc" /></p>
 <h2 id="subnets"><a class="header" href="#subnets">Subnets</a></h2>
 <p>VPC CIDR: 172.16.0.0/16</p>
-<p>Given a subnet CIDR within the VPC.</p>
-<p>172.16.17.30/20
-10101100.00010000.<strong>0001</strong>0001.00011110</p>
+<p>Given a subnet CIDR within the VPC, as follows:</p>
+<p>172.16.17.30/20</p>
+<p>10101100.00010000.<strong>0001</strong>0001.00011110</p>
 <p>The next non-overlaping CIDR (subnet) is to keep the first 16 bits of VPC CIDR prefix and only modify the next 4 bits that are highlighted. And we get the next subnet CIDR within the VPC:</p>
-<p>172.16.33.30/20
-10101100.00010000.<strong>0010</strong>0001.00011110</p>
+<p>172.16.33.30/20</p>
+<p>10101100.00010000.<strong>0010</strong>0001.00011110</p>
 <p>To get an IP address within a subnet, modify the bits other than the 20 bits of subnet CIDR prefix:</p>
-<p>172.16.32.31 
-10101100.00010000.0010<strong>0000.00011111</strong></p>
+<p>172.16.32.31 </p>
+<p>10101100.00010000.0010<strong>0000.00011111</strong></p>
 <h3 id="read-more"><a class="header" href="#read-more">Read More</a></h3>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html</a></li>
@@ -622,19 +622,19 @@ The default is seven days. To disable automated snapshots, set the retention per
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html">Aurora Connection</a></li>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Replication.html">Aurora Replication</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h2 id="elasticache"><a class="header" href="#elasticache">ElastiCache</a></h2>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="elasticache"><a class="header" href="#elasticache">ElastiCache</a></h1>
 <p>A <em>node</em> is the smallest buidling block of an ElastiCache deployment. Each node has its own DNS name and port.</p>
 <p>Both Redis and Memcached cluster need to be run in a VPC, a collection of subnets within that VPC.</p>
-<h1 id="redis"><a class="header" href="#redis">Redis</a></h1>
+<h2 id="redis"><a class="header" href="#redis">Redis</a></h2>
 <p>A Redis <em>shard</em> is a grouping of one to six related nodes. Redis clusters can have up to 500 shards, with data partitioned across the shards.</p>
 <p>Redis Repliation happens in a shard where one of the nodes is the read/write primary node. All the other nodes are read-only replica nodes. Locating read replicas in multiple Availibility Zones improves fault tolerance.</p>
 <p>The primary endpoint of a Redis cluster is a DNS name that always resolves to the primary node in the cluster. The primary endpoint is <strong>immune</strong> to changes to the cluster, such as promoting a read replica to the primary role. Note that Read Replica failover or promotion is happened automatically which is different to RDS (non-Aurora) database.</p>
 <p>The reader endpoint of a Redis cluster will evenly split incoming connections to the endpoint between all read replicas in a ElastiCache for Redis cluster.</p>
 <p>In addition, you can use <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html">global datastores</a> to create cross-region read replica clusters for ElastiCache for Redis to enable low-latency reads and disaster recovery across AWS Regions.</p>
-<h1 id="memchached"><a class="header" href="#memchached">Memchached</a></h1>
+<h2 id="memchached"><a class="header" href="#memchached">Memchached</a></h2>
 <p>A Memcached cluster is a logical grouping of one or more ElastiCache nodes. Data is partitioned across the nodes in the Memcached cluster. A Memcached cluster can have up to 300 nodes. And nodes can be run across multiple Availibility Zones.</p>
 <p>A Memcached cluster does not have the concept of <em>sharding</em> as Redis. Memcached cluster relies on the client <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/AutoDiscovery.html">Auto-Discovery</a> to automatically identify all of the nodes in a cached cluster, and to initiate and maitain connetions to all of these nodes.</p>
-<h1 id="comparing-between-redis-and-memecached"><a class="header" href="#comparing-between-redis-and-memecached">Comparing between Redis and Memecached</a></h1>
+<h3 id="comparing-between-redis-and-memecached"><a class="header" href="#comparing-between-redis-and-memecached">Comparing between Redis and Memecached</a></h3>
 <p><a href="https://aws.amazon.com/elasticache/redis-vs-memcached/">https://aws.amazon.com/elasticache/redis-vs-memcached/</a></p>
 <style>
 table {
