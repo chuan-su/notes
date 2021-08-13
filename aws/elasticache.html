@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Java</title>
+        <title>ElastiCache</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="../java/index.html" class="active"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="../java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="../docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="../docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="../docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li><li class="chapter-item expanded "><a href="../docker/dockerrun.html"><strong aria-hidden="true">2.4.</strong> docker run</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/index.html"><strong aria-hidden="true">3.</strong> AWS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/ebs.html"><strong aria-hidden="true">3.1.</strong> EBS</a></li><li class="chapter-item expanded "><a href="../aws/iam.html"><strong aria-hidden="true">3.2.</strong> IAM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/iamrole.html"><strong aria-hidden="true">3.2.1.</strong> IAM Role</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/vpc.html"><strong aria-hidden="true">3.3.</strong> VPC</a></li><li class="chapter-item expanded "><a href="../aws/elb.html"><strong aria-hidden="true">3.4.</strong> ELB</a></li><li class="chapter-item expanded "><a href="../aws/route53.html"><strong aria-hidden="true">3.5.</strong> Route 53</a></li><li class="chapter-item expanded "><a href="../aws/storage.html"><strong aria-hidden="true">3.6.</strong> Storage</a></li><li class="chapter-item expanded "><a href="../aws/elasticache.html"><strong aria-hidden="true">3.7.</strong> ElastiCache</a></li></ol></li><li class="chapter-item expanded "><a href="../linux/index.html"><strong aria-hidden="true">4.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/volume.html"><strong aria-hidden="true">4.1.</strong> Volume</a></li><li class="chapter-item expanded "><a href="../linux/void.html"><strong aria-hidden="true">4.2.</strong> Void Linux</a></li><li class="chapter-item expanded "><a href="../linux/netcat.html"><strong aria-hidden="true">4.3.</strong> netcat</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Chuan's Notes</a></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">1.</strong> Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/reduce.html"><strong aria-hidden="true">1.1.</strong> reduce</a></li><li class="chapter-item expanded "><a href="../java/foldleft.html"><strong aria-hidden="true">1.2.</strong> foldleft</a></li></ol></li><li class="chapter-item expanded "><a href="../docker/index.html"><strong aria-hidden="true">2.</strong> Docker</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../docker/dockerfile.html"><strong aria-hidden="true">2.1.</strong> Dockerfile</a></li><li class="chapter-item expanded "><a href="../docker/volume.html"><strong aria-hidden="true">2.2.</strong> volume</a></li><li class="chapter-item expanded "><a href="../docker/network.html"><strong aria-hidden="true">2.3.</strong> network</a></li><li class="chapter-item expanded "><a href="../docker/dockerrun.html"><strong aria-hidden="true">2.4.</strong> docker run</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/index.html"><strong aria-hidden="true">3.</strong> AWS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/ebs.html"><strong aria-hidden="true">3.1.</strong> EBS</a></li><li class="chapter-item expanded "><a href="../aws/iam.html"><strong aria-hidden="true">3.2.</strong> IAM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aws/iamrole.html"><strong aria-hidden="true">3.2.1.</strong> IAM Role</a></li></ol></li><li class="chapter-item expanded "><a href="../aws/vpc.html"><strong aria-hidden="true">3.3.</strong> VPC</a></li><li class="chapter-item expanded "><a href="../aws/elb.html"><strong aria-hidden="true">3.4.</strong> ELB</a></li><li class="chapter-item expanded "><a href="../aws/route53.html"><strong aria-hidden="true">3.5.</strong> Route 53</a></li><li class="chapter-item expanded "><a href="../aws/storage.html"><strong aria-hidden="true">3.6.</strong> Storage</a></li><li class="chapter-item expanded "><a href="../aws/elasticache.html" class="active"><strong aria-hidden="true">3.7.</strong> ElastiCache</a></li></ol></li><li class="chapter-item expanded "><a href="../linux/index.html"><strong aria-hidden="true">4.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/volume.html"><strong aria-hidden="true">4.1.</strong> Volume</a></li><li class="chapter-item expanded "><a href="../linux/void.html"><strong aria-hidden="true">4.2.</strong> Void Linux</a></li><li class="chapter-item expanded "><a href="../linux/netcat.html"><strong aria-hidden="true">4.3.</strong> netcat</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -165,20 +165,50 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="java"><a class="header" href="#java">Java</a></h1>
+                        <h2 id="elasticache"><a class="header" href="#elasticache">ElastiCache</a></h2>
+<p>A <em>node</em> is the smallest buidling block of an ElastiCache deployment. Each node has its own DNS name and port.</p>
+<p>Both Redis and Memcached cluster need to be run in a VPC, a collection of subnets within that VPC.</p>
+<h1 id="redis"><a class="header" href="#redis">Redis</a></h1>
+<p>A Redis <em>shard</em> is a grouping of one to six related nodes. Redis clusters can have up to 500 shards, with data partitioned across the shards.</p>
+<p>Redis Repliation happens in a shard where one of the nodes is the read/write primary node. All the other nodes are read-only replica nodes. Locating read replicas in multiple Availibility Zones improves fault tolerance.</p>
+<p>The primary endpoint of a Redis cluster is a DNS name that always resolves to the primary node in the cluster. The primary endpoint is <strong>immune</strong> to changes to the cluster, such as promoting a read replica to the primary role. Note that Read Replica failover or promotion is happened automatically which is different to RDS (non-Aurora) database.</p>
+<p>The reader endpoint of a Redis cluster will evenly split incoming connections to the endpoint between all read replicas in a ElastiCache for Redis cluster.</p>
+<p>In addition, you can use <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html">global datastores</a> to create cross-region read replica clusters for ElastiCache for Redis to enable low-latency reads and disaster recovery across AWS Regions.</p>
+<h1 id="memchached"><a class="header" href="#memchached">Memchached</a></h1>
+<p>A Memcached cluster is a logical grouping of one or more ElastiCache nodes. Data is partitioned across the nodes in the Memcached cluster. A Memcached cluster can have up to 300 nodes. And nodes can be run across multiple Availibility Zones.</p>
+<p>A Memcached cluster does not have the concept of <em>sharding</em> as Redis. Memcached cluster relies on the client <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/AutoDiscovery.html">Auto-Discovery</a> to automatically identify all of the nodes in a cached cluster, and to initiate and maitain connetions to all of these nodes.</p>
+<h1 id="comparing-between-redis-and-memecached"><a class="header" href="#comparing-between-redis-and-memecached">Comparing between Redis and Memecached</a></h1>
+<p><a href="https://aws.amazon.com/elasticache/redis-vs-memcached/">https://aws.amazon.com/elasticache/redis-vs-memcached/</a></p>
+<style>
+table {
+  margin: 0!important;
+}
+</style>
+<table><thead><tr><th align="left"></th><th align="left">Memcached</th><th align="left">Redis</th></tr></thead><tbody>
+<tr><td align="left">Data Partitioning</td><td align="left">Yes</td><td align="left">Yes</td></tr>
+<tr><td align="left">Advanced data structures</td><td align="left">-</td><td align="left">Yes</td></tr>
+<tr><td align="left">Multithreaded architecture</td><td align="left">Yes</td><td align="left">-</td></tr>
+<tr><td align="left">Snapshots/Backups</td><td align="left">-</td><td align="left">Yes</td></tr>
+<tr><td align="left">Replication</td><td align="left">-</td><td align="left">Yes</td></tr>
+</tbody></table>
+<h3 id="read-more"><a class="header" href="#read-more">Read More</a></h3>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html">Elasticache Redis</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/WhatIs.Components.html">Elasticache Memcached</a></li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../aws/storage.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../java/reduce.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../linux/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -190,13 +220,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../aws/storage.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../java/reduce.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../linux/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
