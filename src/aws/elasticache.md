@@ -1,10 +1,10 @@
-## ElastiCache
+# ElastiCache
 
 A *node* is the smallest buidling block of an ElastiCache deployment. Each node has its own DNS name and port.
 
 Both Redis and Memcached cluster need to be run in a VPC, a collection of subnets within that VPC.
 
-# Redis
+## Redis
 
 A Redis *shard* is a grouping of one to six related nodes. Redis clusters can have up to 500 shards, with data partitioned across the shards.
 
@@ -16,13 +16,13 @@ The reader endpoint of a Redis cluster will evenly split incoming connections to
 
 In addition, you can use [global datastores](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html) to create cross-region read replica clusters for ElastiCache for Redis to enable low-latency reads and disaster recovery across AWS Regions.
 
-# Memchached
+## Memchached
 
 A Memcached cluster is a logical grouping of one or more ElastiCache nodes. Data is partitioned across the nodes in the Memcached cluster. A Memcached cluster can have up to 300 nodes. And nodes can be run across multiple Availibility Zones.
 
 A Memcached cluster does not have the concept of *sharding* as Redis. Memcached cluster relies on the client [Auto-Discovery](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/AutoDiscovery.html) to automatically identify all of the nodes in a cached cluster, and to initiate and maitain connetions to all of these nodes.
 
-# Comparing between Redis and Memecached
+### Comparing between Redis and Memecached
 
 [https://aws.amazon.com/elasticache/redis-vs-memcached/](https://aws.amazon.com/elasticache/redis-vs-memcached/)
 
