@@ -2,6 +2,8 @@
 
 ![ebs](../img/aws-ebs.svg)
 
+**Note that** you can attach multiple EBS volumes to a single instance. *The volume and instance must be in the same Availability Zone.*
+
 Reference
 
 [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html)

@@ -24,6 +24,17 @@ To get an IP address within a subnet, modify the bits other than the 20 bits of 
 
 10101100.00010000.0010**0000.00011111**
 
+## VPC endpoint
+
+A [VPC endpoint](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html) enables private connections **between your VPC and supported AWS services** and [VPC endpoint services](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html) powered by AWS PrivateLink.
+
+A VPC endpoint does not require an internet gateway, virtual private gateway, NAT device, VPN connection, or AWS Direct Connect connection. Instances in your VPC do not require public IP addresses to communicate with resources in the service. 
+
+One usecase of VPC endpoint is to [create VPC endpoints for Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/vpc-endpoints.html)
+
+## DHCP option set
+
+
 ### Read More
 
 - [https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
