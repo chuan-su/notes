@@ -28,6 +28,8 @@
     - [ElastiCache](aws/elasticache.md)
     - [Security](aws/security.md)
       - [Data Encryption](aws/data-encryption.md)
+    - [Cost](aws/cost.md)
+    - [Misc](aws/misc.md)
 - [Linux](linux/README.md)
     - [Volume](linux/volume.md)
     - [Void Linux](linux/void.md)

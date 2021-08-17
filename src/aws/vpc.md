@@ -32,6 +32,10 @@ A VPC endpoint does not require an internet gateway, virtual private gateway, NA
 
 One usecase of VPC endpoint is to [create VPC endpoints for Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/vpc-endpoints.html)
 
+### VPC endpoint service
+
+- [VPC endpoint serices (AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service-overview.html)
+
 ## DHCP option set
 
 
