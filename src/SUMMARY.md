@@ -24,7 +24,7 @@
     - [CloudFront](aws/cloudfront.md)
     - [Storage](aws/storage.md)
       - [S3 and Glacier](aws/s3.md)
-      - [Relication](aws/replication.md)
+      - [Replication](aws/replication.md)
     - [ElastiCache](aws/elasticache.md)
     - [Security](aws/security.md)
       - [Data Encryption](aws/data-encryption.md)

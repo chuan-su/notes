@@ -1,4 +1,4 @@
-# Relication & Backups
+# Replication & Backups
 
 ### S3
 
