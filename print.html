@@ -685,11 +685,14 @@ A regional ELB load balancer is an ideal target for AWS Global Accelerator. AWS 
 </ul>
 <h2 id="cloudfront-private-content"><a class="header" href="#cloudfront-private-content">CloudFront private content</a></h2>
 <ul>
-<li>Signed URL</li>
-<li>Signed Cookies</li>
-<li>Origin Access Identify for restricting access to S3 buckets.</li>
+<li>Signed URL for individual files</li>
+<li>Signed Cookies for multiple files</li>
+<li>Origin Access Identify for restricting access to S3 buckets</li>
 <li>Custom Headers for restricting access to ELB</li>
+<li>Use AWS WAF firewall to control content access</li>
 </ul>
+<h2 id="resilient"><a class="header" href="#resilient">Resilient</a></h2>
+<p>To set up <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html">CloudFront origin failover</a>, you must have a distribution with at least two origins. Next, you create an origin group for your distribution that includes two origins, setting one as the primary. Finally, you create or update a cache behavior to use the origin group.</p>
 <h4 id="read-more-5"><a class="header" href="#read-more-5">Read More</a></h4>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ConfiguringCaching.html">CloudFront Caching</a></li>
@@ -732,6 +735,13 @@ A regional ELB load balancer is an ideal target for AWS Global Accelerator. AWS 
 <p>Read More</p>
 <ul>
 <li><a href="https://aws.amazon.com/s3/features/#amazon-glacier-select">Amazon S3 Features</a></li>
+</ul>
+<h3 id="s3-event"><a class="header" href="#s3-event">S3 Event</a></h3>
+<p>Amazon S3 supports the following destinations where it can publish events:</p>
+<ul>
+<li>Amazon SNS</li>
+<li>Amazon SQS</li>
+<li>AWS Lambda</li>
 </ul>
 <h3 id="s3-range-get"><a class="header" href="#s3-range-get">S3 Range GET?</a></h3>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="replication--backups"><a class="header" href="#replication--backups">Replication &amp; Backups</a></h1>
@@ -846,11 +856,15 @@ table {
 </ul>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h2 id="cost"><a class="header" href="#cost">Cost</a></h2>
 <h2 id="reserved-instance"><a class="header" href="#reserved-instance">Reserved Instance</a></h2>
-<p><strong>Standard Reserved Instance</strong>, enables modify AZ, scope, networking type and instance size. 
-<strong>Convertable Reserved Instance</strong>, enables modify instance family, operating system and tenancy.</p>
+<ul>
+<li><strong>Standard Reserved Instance</strong>, enables modify AZ, scope, networking type and instance size. </li>
+<li><strong>Convertable Reserved Instance</strong>, enables modify instance family, operating system and tenancy.</li>
+</ul>
 <h2 id="saving-plan"><a class="header" href="#saving-plan">Saving Plan</a></h2>
-<p><strong>Compute Saving Plans</strong>, reduce costs of EC2 Instance usage by up to 66%, regardless of <code>instance family</code>,<code>region</code>, size, AZ, OS or tenancy, EC2 Intance usage even includes ECS and Lambda. 
-<strong>EC2 Instance Saving Plans</strong>, reduce costs of EC2 Instance usage by up to 72%, regardless of instance size, AZ, OS or tenancy</p>
+<ul>
+<li><strong>Compute Saving Plans</strong>, reduce costs of EC2 Instance usage by up to 66%, regardless of <code>instance family</code>,<code>region</code>, size, AZ, OS or tenancy, EC2 Intance usage even includes ECS and Lambda. </li>
+<li><strong>EC2 Instance Saving Plans</strong>, reduce costs of EC2 Instance usage by up to 72%, regardless of instance size, AZ, OS or tenancy</li>
+</ul>
 <h4 id="read-more-7"><a class="header" href="#read-more-7">Read more</a></h4>
 <ul>
 <li><a href="https://aws.amazon.com/savingsplans/faq/?nc1=h_ls">Saving Plans FAQ</a></li>

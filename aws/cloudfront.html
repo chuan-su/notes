@@ -174,11 +174,14 @@
 </ul>
 <h2 id="cloudfront-private-content"><a class="header" href="#cloudfront-private-content">CloudFront private content</a></h2>
 <ul>
-<li>Signed URL</li>
-<li>Signed Cookies</li>
-<li>Origin Access Identify for restricting access to S3 buckets.</li>
+<li>Signed URL for individual files</li>
+<li>Signed Cookies for multiple files</li>
+<li>Origin Access Identify for restricting access to S3 buckets</li>
 <li>Custom Headers for restricting access to ELB</li>
+<li>Use AWS WAF firewall to control content access</li>
 </ul>
+<h2 id="resilient"><a class="header" href="#resilient">Resilient</a></h2>
+<p>To set up <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html">CloudFront origin failover</a>, you must have a distribution with at least two origins. Next, you create an origin group for your distribution that includes two origins, setting one as the primary. Finally, you create or update a cache behavior to use the origin group.</p>
 <h4 id="read-more"><a class="header" href="#read-more">Read More</a></h4>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ConfiguringCaching.html">CloudFront Caching</a></li>
