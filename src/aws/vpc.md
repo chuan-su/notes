@@ -36,8 +36,27 @@ One usecase of VPC endpoint is to [create VPC endpoints for Amazon ECS](https://
 
 - [VPC endpoint serices (AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service-overview.html)
 
+## VPC Link
+
+You can create an `API Gateway API` with private integration to provide your customers access to HTTP/HTTPS resources within your Amazon VPC.
+
+Such VPC resources are HTTP/HTTPS endpoints on an EC2 instance behind a `Network Load Balancer` in the VPC. The Network Load Balancer encapsulates the VPC resource and routes incoming requests to the targeted resource. 
+
+- [API Gateway privat integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-api-with-vpclink-console.html)
+- [Tutorial: Build a REST API with API Gateway private integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-with-private-integration.html)
+
+## Multi-VPC Network Infrastructure
+
+- [Whitepaper: Building a Scalable and Secure Multi-VPC AWS Network Infrastructure](https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/welcome.html)
+- [Centralized egress to Internet](https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/centralized-egress-to-internet.html)
+- [Creating a single internet exit point from multiple VPCs Using AWS Transit Gateway](https://aws.amazon.com/blogs/networking-and-content-delivery/creating-a-single-internet-exit-point-from-multiple-vpcs-using-aws-transit-gateway/)
+- [Egress VPC](https://www.gilles.cloud/2020/10/egress-vpc-and-aws-transit-gateway.html)
+
 ## DHCP option set
 
+# Hybrid Cloud
+
+- [Whitepaper: AWS VPC Connectivity Options](https://d1.awsstatic.com/whitepapers/aws-amazon-vpc-connectivity-options.pdf)
 
 ### Read More
 

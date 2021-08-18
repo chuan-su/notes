@@ -2,7 +2,8 @@
 
 ## CloudFront Caching
 
-- Caching based on Query String
+- [Caching based on Query String](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html)
+  - Always Use the Same Case for Parameter Names and Values.
 - Caching based on cookies
 - Caching based on request headers
 

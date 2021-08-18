@@ -8,6 +8,10 @@ As Elastic Load Blancer does not support RDS instances, you can, however, use Ro
 
 ![weighted](../img/aws-53-weighted.svg)
 
+# Blue/Green Deployment
+
+You can use weighted routing for blue/green deployement. Read more at [Whitepaper: AWS Blue Green Deployment](https://d1.awsstatic.com/whitepapers/AWS_Blue_Green_Deployments.pdf)
+
 Reference
 
 - [Scale RDS instances](https://aws.amazon.com/blogs/database/scaling-your-amazon-rds-instance-vertically-and-horizontally/)

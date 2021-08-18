@@ -23,6 +23,11 @@ You can use a single step policy or create multiple (at least 4) simple policies
 
 - With simple scaling policies, after a scaling activity is started, the policy must wait for the scaling activity or health check replacement to complete and the cooldown period to expire before responding to additional alarms. Cooldown periods help to prevent the initiation of additional scaling activities before the effects of previous activities are visible. In contrast, with step scaling the policy can continue to respond to additional alarms, even while a scaling activity or health check replacement is in progress. 
 
+### Auto Scaling Based on Messages in SQS
+
+
+- [Building Loosely Coupled, Scalable, Applications with Amazon SQS and Amazon SNS](https://aws.amazon.com/blogs/compute/building-loosely-coupled-scalable-c-applications-with-amazon-sqs-and-amazon-sns/)
+
 ### Read More
 
 - [Step and simple scaling poclies](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html)
