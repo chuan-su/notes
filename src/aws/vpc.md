@@ -52,11 +52,13 @@ Such VPC resources are HTTP/HTTPS endpoints on an EC2 instance behind a `Network
 - [Creating a single internet exit point from multiple VPCs Using AWS Transit Gateway](https://aws.amazon.com/blogs/networking-and-content-delivery/creating-a-single-internet-exit-point-from-multiple-vpcs-using-aws-transit-gateway/)
 - [Egress VPC](https://www.gilles.cloud/2020/10/egress-vpc-and-aws-transit-gateway.html)
 
-## DHCP option set
-
 # Hybrid Cloud
 
+- [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/vpn-redundant-connection.html)
+- [Direct Connect](https://docs.aws.amazon.com/directconnect/latest/UserGuide/lags.html)
 - [Whitepaper: AWS VPC Connectivity Options](https://d1.awsstatic.com/whitepapers/aws-amazon-vpc-connectivity-options.pdf)
+- [https://aws.amazon.com/premiumsupport/knowledge-center/transit-gateway-ecmp-multiple-tunnels/](https://aws.amazon.com/premiumsupport/knowledge-center/transit-gateway-ecmp-multiple-tunnels/)
+- [https://aws.amazon.com/blogs/aws/new-vpc-traffic-mirroring/](https://aws.amazon.com/blogs/aws/new-vpc-traffic-mirroring/)
 
 ### Read More
 

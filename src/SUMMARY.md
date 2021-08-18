@@ -23,6 +23,7 @@
     - [CloudFront](aws/cloudfront.md)
     - [Storage](aws/storage.md)
       - [S3 and Glacier](aws/s3.md)
+      - [DynamoDB](aws/dynamodb.md)
       - [Replication](aws/replication.md)
     - [ElastiCache](aws/elasticache.md)
     - [Security](aws/security.md)

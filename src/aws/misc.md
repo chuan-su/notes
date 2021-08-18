@@ -8,10 +8,6 @@ Amazon FSx also integrates with Amazon S3, making it easy for you to process clo
 
 - [Deploying Elastic Beanstalk applications from Docker containers](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html)
 
-## DynamoDB
-
-- [Auto Scaling](https://aws.amazon.com/blogs/aws/new-auto-scaling-for-amazon-dynamodb/)
-
 ## CloudTrail
 
 By default, CloudTrail event log files are encrypted using Amazon S3 server-side encryption (SSE). You can also choose to encrypt your log files with an AWS Key Management Service (AWS KMS) key. 
@@ -38,7 +34,6 @@ Read More:
 
 - [https://aws.amazon.com/about-aws/whats-new/2016/03/aws-trusted-advisor-adds-checks-for-amazon-s3-amazon-redshift-reserved-instances-security-and-service-limits/](https://aws.amazon.com/about-aws/whats-new/2016/03/aws-trusted-advisor-adds-checks-for-amazon-s3-amazon-redshift-reserved-instances-security-and-service-limits/)
 
-
 ## Cost
 
 The main distinction between RIs and Savings Plans is the former commits to number of instances used (RIs), while the latter commits to a minimum dollar per hour spend (Savings Plans). 
@@ -57,3 +52,13 @@ The main distinction between RIs and Savings Plans is the former commits to numb
 
 - [Saving Plans FAQ](https://aws.amazon.com/savingsplans/faq/?nc1=h_ls)
 - [AWS Savings Plans: What They Are And Why You Should Care](https://go.forrester.com/blogs/aws-savings-plans-what-they-are-and-why-you-should-care/)
+
+## Others
+- Cloud Search
+- AWS Step Functions
+- AWS Batch
+- [AWS KMS](https://d0.awsstatic.com/whitepapers/aws-kms-best-practices.pdf)
+- [Disaster Recovery](https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html)
+- AWS CloudHSM
+- Amazon Polly
+- Amazon EMR

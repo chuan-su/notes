@@ -16,6 +16,10 @@
 - Custom Headers for restricting access to ELB
 - Use AWS WAF firewall to control content access
 
+## Lambda@Edge
+
+- [Visitor Prioritization](https://aws.amazon.com/blogs/networking-and-content-delivery/visitor-prioritization-on-e-commerce-websites-with-cloudfront-and-lambdaedge/)
+
 ## Resilient
 
 To set up [CloudFront origin failover](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html), you must have a distribution with at least two origins. Next, you create an origin group for your distribution that includes two origins, setting one as the primary. Finally, you create or update a cache behavior to use the origin group.
