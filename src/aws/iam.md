@@ -30,6 +30,25 @@ The user policy example below allows an IAM user to upload and read objects in `
 Read more at 
 [https://docs.aws.amazon.com/AmazonS3/latest/userguide/user-policies.htm](https://docs.aws.amazon.com/AmazonS3/latest/userguide/user-policies.html)
 
+### Permission Bundaries
+
+You may create the following policy that allows all actions for the EC2 service and then attach that policy to an IAM user as a permissions boundary:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+     {
+       "Effect": "Allow",
+       "Action": ["ec2.*"], 
+       "Resource": "*"
+     }
+  ]
+}  
+```
+If you then attach the `AdministratorAccess` policy which grants full access to all AWS services—to the user, the user will still only be able to perform actions in EC2.
+The permissions boundary limits the user to performing only those actions laid out in the permissions boundary policy. 
+
 ## Bucket policies
 
 Bucket policies are resource-based policies.
@@ -78,3 +97,10 @@ Read more about bucket policies at
 ## Object ACL and Bucket ACL
 
 Read more at [https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-policy-alternatives-guidelines.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-policy-alternatives-guidelines.html)
+
+## Other Resource-based Polices
+
+- `S3` offers optional bucket policies that control access to objects or entire buckets. 
+- `Key Management Service` (KMS) requires you to define a key policy to specify the administrators and users of a key.
+- `SNS` topics have resource policies to control who can publish messages or subscribe to a topic, as well as which delivery protocols they can use.
+- `Simple Queue Service` (SQS) queues also use resource-based SQS access policies to control who can send to and receive messages from a queue.

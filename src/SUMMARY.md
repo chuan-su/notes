@@ -15,6 +15,7 @@
     - [EC2](aws/ec2.md)
     - [IAM](aws/iam.md)
       - [IAM Role](aws/iamrole.md)
+    - [KMS](aws/kms.md)
     - [VPC](aws/vpc.md)
     - [ELB](aws/elb.md)
       - [Auto Scaling](aws/auto-scaling.md)

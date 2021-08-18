@@ -53,7 +53,9 @@ The main distinction between RIs and Savings Plans is the former commits to numb
 - [Saving Plans FAQ](https://aws.amazon.com/savingsplans/faq/?nc1=h_ls)
 - [AWS Savings Plans: What They Are And Why You Should Care](https://go.forrester.com/blogs/aws-savings-plans-what-they-are-and-why-you-should-care/)
 
+
 ## Others
+- Redis Auth
 - Cloud Search
 - AWS Step Functions
 - AWS Batch
