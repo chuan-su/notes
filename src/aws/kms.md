@@ -36,6 +36,8 @@ If you only have the `Encrypted private key`, you need to decrypt the encrypted 
 
 Every customer master key (CMK) must have `exactly one` key policy. This key policy controls access only to its associated CMK, along with IAM policies and grants. Unlike IAM policies, which are global, key policies are `Regional`. Each key policy is effective only in the Region that hosts the CMK. 
 
+ This default key policy has one policy statement that gives the AWS account (root user) that owns the CMK full access to the CMK and enables IAM policies in the account to allow access to the CMK.
+
 ### Key Users
 
 - Use the CMS Directly

@@ -33,10 +33,20 @@ Note that:
 
 - `Partition` groups is in the middle, that places a small group of instances across distinct underlying hardware to reduce correlated failures. Partition placement groups can be used to deploy large distributed and **replicated** workloads, such as HDFS, HBase, and Cassandra, across distinct racks.
 
-# Cost Efficiency
+### Enhanced Networking
 
-Reserved instance?
-- [https://aws.amazon.com/blogs/aws/new-savings-plans-for-aws-compute-services/](https://aws.amazon.com/blogs/aws/new-savings-plans-for-aws-compute-services/)
+#### Elastic Fabric Adapter (EFA)
+
+- EFA OS-bypass traffic is limited to a single subnet. In other words, EFA traffic cannot be sent from one subnet to another. Normal IP traffic from the EFA can be sent from one subnet to another.
+
+- EFA OS-bypass traffic is not routable. Normal IP traffic from the EFA remains routable.
+
+- The EFA must be a member of a security group that allows all inbound and outbound traffic to and from the security group itself.
+
+#### Differences between EFAs and ENAs
+
+- Elastic Network Adapters (ENAs) provide traditional IP networking features that are required to support VPC networking.
+- EFAs provide all of the same traditional IP networking features as ENAs, and they also support OS-bypass capabilities. OS-bypass enables HPC and machine learning applications to bypass the operating system kernel and to communicate directly with the EFA device. 
 
 ### Read More:    	
 

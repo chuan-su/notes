@@ -16,6 +16,10 @@ The reader endpoint of a Redis cluster will evenly split incoming connections to
 
 In addition, you can use [global datastores](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html) to create cross-region read replica clusters for ElastiCache for Redis to enable low-latency reads and disaster recovery across AWS Regions.
 
+### AUTH
+
+Redis *AUTH* can only be enabled for encryption in-transit enabled ElastiCache for Redis clusters.
+
 ## Memchached
 
 A Memcached cluster is a logical grouping of one or more ElastiCache nodes. Data is partitioned across the nodes in the Memcached cluster. A Memcached cluster can have up to 300 nodes. And nodes can be run across multiple Availibility Zones.

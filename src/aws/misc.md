@@ -4,6 +4,13 @@ Amazon FSx also integrates with Amazon S3, making it easy for you to process clo
 
 - [FAQ](https://aws.amazon.com/es/fsx/lustre/faqs/?nc=sn&loc=5)
 
+## Aurora
+You can invoke a [Lambda function from an Amazon Aurora MySQL DB cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Lambda.html#AuroraMySQL.Integrating.LambdaAccess). This approach can be useful when you want to integrate your database running on Aurora MySQL with other AWS services. For example, you might want to send a notification using Amazon Simple Notification Service (Amazon SNS) whenever a row is inserted into a specific table in your database. 
+
+To invoke a Lambda, the Aurora DB cluster must: 
+- Create an IAM role, and attach the IAM polcy for providing permissions that allow Aurora DB cluster to invoke Lambda functions.
+- Configure your Aurora MySQL DB cluster to allow outbound connections to Lambda. 
+
 ## Elatic Beanstalk
 
 - [Deploying Elastic Beanstalk applications from Docker containers](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html)
@@ -43,6 +50,11 @@ The main distinction between RIs and Savings Plans is the former commits to numb
 - **Standard Reserved Instance**, enables modify AZ, scope, networking type and instance size. 
 - **Convertable Reserved Instance**, enables modify instance family, operating system and tenancy.
 
+## Spot Instance
+
+Spot Instance runs whenever capacity is available and the maximum price per hour for your request exceeds the Spot price. 
+Spot Instances are a cost-effective choice if you can be flexible about when your applications run and if your applications can be interrupted
+
 ## Saving Plan
 
 - **Compute Saving Plans**, reduce costs of EC2 Instance usage by up to 66%, regardless of `instance family`,`region`, size, AZ, OS or tenancy, EC2 Intance usage even includes ECS and Lambda. 
@@ -52,10 +64,10 @@ The main distinction between RIs and Savings Plans is the former commits to numb
 
 - [Saving Plans FAQ](https://aws.amazon.com/savingsplans/faq/?nc1=h_ls)
 - [AWS Savings Plans: What They Are And Why You Should Care](https://go.forrester.com/blogs/aws-savings-plans-what-they-are-and-why-you-should-care/)
-
+- [https://aws.amazon.com/blogs/aws/new-savings-plans-for-aws-compute-services/](https://aws.amazon.com/blogs/aws/new-savings-plans-for-aws-compute-services/)
+- [Using Sport instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
 
 ## Others
-- Redis Auth
 - Cloud Search
 - AWS Step Functions
 - AWS Batch

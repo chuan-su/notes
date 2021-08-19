@@ -1,5 +1,0 @@
-# Storage 
-
-
-Aurora vertical scaling?
-
