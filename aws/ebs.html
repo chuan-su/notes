@@ -172,6 +172,8 @@
 <p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html</a></p>
 <h4 id="snapshots-encryption"><a class="header" href="#snapshots-encryption">Snapshots Encryption</a></h4>
 <p><img src="../img/aws-ebs-snapshots.svg" alt="ebs-snapshosts" /></p>
+<p>To copy an encrypted snapshot from one AWS Region to another, you must specify the CMK in the destination AWS Region. This is because CMKs are specific to the AWS Region that they are created in.</p>
+<p><strong>Note that</strong> Snapshots are incremental backups, which means that only the blocks on the device that have changed after your most recent snapshot are saved. This minimizes the time required to create the snapshot and saves on storage costs by not duplicating data. Each snapshot contains all of the information that is needed to restore your data (from the moment when the snapshot was taken) to a new EBS volume. </p>
 <h2 id="iops-and-disk-throughput"><a class="header" href="#iops-and-disk-throughput">IOPS and Disk Throughput</a></h2>
 <p>AWS measures storage performance in <em>input/output operations per second</em>.</p>
 <p>MySQL and MariaDB have a page size of 16 KB. Hence, writing 16 KB of data to disk would constitute one I/O operation.

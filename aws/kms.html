@@ -184,6 +184,7 @@
 <p>If you only have the <code>Encrypted private key</code>, you need to decrypt the encrypted private key first byby passing it to the <code>Decrypt</code> operation. AWS KMS uses your CMK to decrypt the data key and then it returns the plaintext private key. Use the <code>plaintext private key</code> to generate the signature. Then remove the plaintext private key from memory as soon as possible. </p>
 <h2 id="key-policies"><a class="header" href="#key-policies">Key Policies</a></h2>
 <p>Every customer master key (CMK) must have <code>exactly one</code> key policy. This key policy controls access only to its associated CMK, along with IAM policies and grants. Unlike IAM policies, which are global, key policies are <code>Regional</code>. Each key policy is effective only in the Region that hosts the CMK. </p>
+<p>This default key policy has one policy statement that gives the AWS account (root user) that owns the CMK full access to the CMK and enables IAM policies in the account to allow access to the CMK.</p>
 <h3 id="key-users"><a class="header" href="#key-users">Key Users</a></h3>
 <ul>
 <li>Use the CMS Directly</li>

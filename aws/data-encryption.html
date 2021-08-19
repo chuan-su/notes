@@ -168,12 +168,27 @@
                         <h1 id="data-encryption"><a class="header" href="#data-encryption">Data Encryption</a></h1>
 <h2 id="data-at-rest"><a class="header" href="#data-at-rest">Data at Rest</a></h2>
 <p>Data stored in Glacier and Storage Gateway are encrypted by default.</p>
+<h3 id="rds"><a class="header" href="#rds">RDS</a></h3>
+<p>You can only enable encryption for an Amazon RDS DB instance when you create it, not after the DB instance is created.</p>
+<p>However, because you can encrypt a copy of an unencrypted snapshot, you can effectively add encryption to an unencrypted DB instance. That is, you can create a snapshot of your DB instance, and then create an encrypted copy of that snapshot. You can then restore a DB instance from the encrypted snapshot, and thus you have an encrypted copy of your original DB instance.</p>
 <h2 id="data-in-trasit"><a class="header" href="#data-in-trasit">Data in Trasit</a></h2>
 <ul>
-<li>All traffic between AZs is encrypted</li>
+<li>All traffic between AZs is encrypted.</li>
+<li>All cross-Region traffic that uses Amazon <code>VPC Peering</code> and <code>Transit Gateway peering</code> is automatically bulk-encrypted when it exits a Region. </li>
+<li>Remote access to your instances using <code>AWS Systems Manager</code> Session Manager or the Run Command is encrypted using TLS 1.2.</li>
 <li>All data that <code>Storage Gateway</code> transfers to AWS is encrypted in transit and at rest in AWS.</li>
-<li>Amazon Certificate Manager (ACM) to generate a TLS certifi- cate and then install it on an application load balancer or a CloudFront distribution</li>
+<li>Use the <code>EFS mount helper</code> to mount a file system so that all NFS traffic is encrypted in transit using Transport Layer Security 1.2 (TLS).</li>
+<li>Amazon Certificate Manager (ACM) to generate a TLS certifi- cate and then install it on an <code>application load balancer</code>, <code>Network load balancer</code> or a <code>CloudFront distribution</code>.</li>
+<li><code>AWS Direct Connect</code> does not encrypt your traffic that is in transit.</li>
+<li><code>AWS Direct Connect</code> and AWS Site-to-Site VPN combination  provides an IPsec-encrypted private connection that also reduces network costs, increases bandwidth throughput, and provides a more consistent network experience than internet-based VPN connection</li>
+<li>You can use Secure Socket Layer (SSL) or Transport Layer Security (TLS) from your application to encrypt a connection to a DB instance running MySQL, MariaDB, SQL Server, Oracle, or PostgreSQL. 
+<code>Amazon RDS</code> creates an SSL certificate and installs the certificate on the DB instance when the instance is provisioned. <a href="https://aws.amazon.com/rds/features/security/">Read more</a></li>
 </ul>
+<h2 id="tls-listener"><a class="header" href="#tls-listener">TLS listener</a></h2>
+<p>To use a TLS listener, you must deploy at least one server certificate on your load balancer. The load balancer uses a server certificate to terminate the front-end connection and then to decrypt requests from clients before sending them to the targets.</p>
+<p>Elastic Load Balancing uses a TLS negotiation configuration, known as a security policy, to negotiate TLS connections between a client and the load balancer. <strong>A security policy is a combination of protocols and ciphers</strong>. The protocol establishes a secure connection between a client and a server and ensures that all data passed between the client and your load balancer is private. A cipher is an encryption algorithm that uses encryption keys to create a coded message. Protocols use several ciphers to encrypt data over the internet. During the connection negotiation process, the client and the load balancer present a list of ciphers and protocols that they each support, in order of preference. The first cipher on the server's list that matches any one of the client's ciphers is selected for the secure connection.</p>
+<p>Network Load Balancers do not support TLS renegotiation.</p>
+<p>Read more about <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html">TLS listener for Network Load Balancer</a></p>
 
                     </main>
 

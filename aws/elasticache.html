@@ -174,6 +174,8 @@
 <p>The primary endpoint of a Redis cluster is a DNS name that always resolves to the primary node in the cluster. The primary endpoint is <strong>immune</strong> to changes to the cluster, such as promoting a read replica to the primary role. Note that Read Replica failover or promotion is happened automatically which is different to RDS (non-Aurora) database.</p>
 <p>The reader endpoint of a Redis cluster will evenly split incoming connections to the endpoint between all read replicas in a ElastiCache for Redis cluster.</p>
 <p>In addition, you can use <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html">global datastores</a> to create cross-region read replica clusters for ElastiCache for Redis to enable low-latency reads and disaster recovery across AWS Regions.</p>
+<h3 id="auth"><a class="header" href="#auth">AUTH</a></h3>
+<p>Redis <em>AUTH</em> can only be enabled for encryption in-transit enabled ElastiCache for Redis clusters.</p>
 <h2 id="memchached"><a class="header" href="#memchached">Memchached</a></h2>
 <p>A Memcached cluster is a logical grouping of one or more ElastiCache nodes. Data is partitioned across the nodes in the Memcached cluster. A Memcached cluster can have up to 300 nodes. And nodes can be run across multiple Availibility Zones.</p>
 <p>A Memcached cluster does not have the concept of <em>sharding</em> as Redis. Memcached cluster relies on the client <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/AutoDiscovery.html">Auto-Discovery</a> to automatically identify all of the nodes in a cached cluster, and to initiate and maitain connetions to all of these nodes.</p>
