@@ -22,6 +22,7 @@
     - [Route 53](aws/route53.md)
     - [Global Accelerator](aws/global-accelerator.md)
     - [CloudFront](aws/cloudfront.md)
+    - [Lambda](aws/lambda.md)
     - [Storage](aws/storage.md)
       - [S3 and Glacier](aws/s3.md)
       - [DynamoDB](aws/dynamodb.md)

@@ -67,6 +67,10 @@ Spot Instances are a cost-effective choice if you can be flexible about when you
 - [https://aws.amazon.com/blogs/aws/new-savings-plans-for-aws-compute-services/](https://aws.amazon.com/blogs/aws/new-savings-plans-for-aws-compute-services/)
 - [Using Sport instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
 
+## SNS
+
+[Designing durable serverless apps with DLQs for Amazon SNS, Amazon SQS, AWS Lambda](https://aws.amazon.com/blogs/compute/designing-durable-serverless-apps-with-dlqs-for-amazon-sns-amazon-sqs-aws-lambda/)
+
 ## Others
 - Cloud Search
 - AWS Step Functions
