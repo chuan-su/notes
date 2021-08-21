@@ -182,6 +182,12 @@
 <p>A <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html">VPC endpoint</a> enables private connections <strong>between your VPC and supported AWS services</strong> and <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html">VPC endpoint services</a> powered by AWS PrivateLink.</p>
 <p>A VPC endpoint does not require an internet gateway, virtual private gateway, NAT device, VPN connection, or AWS Direct Connect connection. Instances in your VPC do not require public IP addresses to communicate with resources in the service. </p>
 <p>One usecase of VPC endpoint is to <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/vpc-endpoints.html">create VPC endpoints for Amazon ECS</a></p>
+<h3 id="gateway-endpoint"><a class="header" href="#gateway-endpoint">Gateway endpoint</a></h3>
+<ul>
+<li>Endpoint connections cannot be extended out of a VPC. Resources on the other side of a VPN connection, VPC peering connection, transit gateway, AWS Direct Connect connection, or ClassicLink connection in your VPC cannot use the endpoint to communicate with resources in the endpoint service. </li>
+<li>Endpoints are supported within the same Region only. You cannot create an endpoint between a VPC and a service in a different Region. </li>
+<li>You must turn on DNS resolution in your VPC</li>
+</ul>
 <h3 id="vpc-endpoint-service"><a class="header" href="#vpc-endpoint-service">VPC endpoint service</a></h3>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service-overview.html">VPC endpoint serices (AWS PrivateLink</a></li>
@@ -194,6 +200,16 @@
 <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-with-private-integration.html">Tutorial: Build a REST API with API Gateway private integration</a></li>
 </ul>
 <h2 id="multi-vpc-network-infrastructure"><a class="header" href="#multi-vpc-network-infrastructure">Multi-VPC Network Infrastructure</a></h2>
+<h3 id="vpc-peering"><a class="header" href="#vpc-peering">VPC Peering</a></h3>
+<p>if VPC A and VPC B are peered, and VPC A has any of these connections:</p>
+<ul>
+<li>A VPN connection or an AWS Direct Connect connection to a corporate network</li>
+<li>An internet connection through an internet gateway</li>
+<li>An internet connection in a private subnet through a NAT device</li>
+<li>A gateway VPC endpoint to an AWS service; for example, an endpoint to Amazon S3. </li>
+</ul>
+<p>then instances in VPC B cannot use the connection to access resources on the other side of the connection. </p>
+<h3 id="transive-gateway"><a class="header" href="#transive-gateway">Transive Gateway</a></h3>
 <ul>
 <li><a href="https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/welcome.html">Whitepaper: Building a Scalable and Secure Multi-VPC AWS Network Infrastructure</a></li>
 <li><a href="https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/centralized-egress-to-internet.html">Centralized egress to Internet</a></li>
