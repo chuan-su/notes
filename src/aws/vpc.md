@@ -32,6 +32,12 @@ A VPC endpoint does not require an internet gateway, virtual private gateway, NA
 
 One usecase of VPC endpoint is to [create VPC endpoints for Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/vpc-endpoints.html)
 
+### Gateway endpoint
+
+- Endpoint connections cannot be extended out of a VPC. Resources on the other side of a VPN connection, VPC peering connection, transit gateway, AWS Direct Connect connection, or ClassicLink connection in your VPC cannot use the endpoint to communicate with resources in the endpoint service. 
+- Endpoints are supported within the same Region only. You cannot create an endpoint between a VPC and a service in a different Region. 
+- You must turn on DNS resolution in your VPC
+
 ### VPC endpoint service
 
 - [VPC endpoint serices (AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service-overview.html)
@@ -46,6 +52,19 @@ Such VPC resources are HTTP/HTTPS endpoints on an EC2 instance behind a `Network
 - [Tutorial: Build a REST API with API Gateway private integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-with-private-integration.html)
 
 ## Multi-VPC Network Infrastructure
+
+### VPC Peering
+
+if VPC A and VPC B are peered, and VPC A has any of these connections:
+
+- A VPN connection or an AWS Direct Connect connection to a corporate network
+- An internet connection through an internet gateway
+- An internet connection in a private subnet through a NAT device
+- A gateway VPC endpoint to an AWS service; for example, an endpoint to Amazon S3. 
+
+then instances in VPC B cannot use the connection to access resources on the other side of the connection. 
+
+### Transive Gateway
 
 - [Whitepaper: Building a Scalable and Secure Multi-VPC AWS Network Infrastructure](https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/welcome.html)
 - [Centralized egress to Internet](https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/centralized-egress-to-internet.html)

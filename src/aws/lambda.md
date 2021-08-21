@@ -72,7 +72,7 @@ If the event exceeds the maximum `age of event` or `retry attemps`, you can conf
 
 ###### Destination configuration
 
-![lambda destinations](lambda-destinations.png)
+![lambda destinations](../img/aws-lambda-destinations.png)
 
 ###### DLQ
 
