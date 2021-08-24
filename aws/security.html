@@ -167,6 +167,22 @@
                     <main>
                         <h1 id="security"><a class="header" href="#security">Security</a></h1>
 <p><img src="../img/aws-security.svg" alt="security" /></p>
+<h2 id="ddos-attack"><a class="header" href="#ddos-attack">DDoS attack</a></h2>
+<p>To protect your system from DDoS attack, you can do the following:</p>
+<ul>
+<li>
+<p>Use an Amazon CloudFront service for distributing both static and dynamic content.</p>
+</li>
+<li>
+<p>Use an Application Load Balancer with Auto Scaling groups for your EC2 instances then restrict direct Internet traffic to your Amazon RDS database by deploying to a private subnet.</p>
+</li>
+<li>
+<p>Set up alerts in Amazon CloudWatch to look for high <code>Network In</code> and CPU utilization metrics.</p>
+</li>
+<li>
+<p>AWS Shield and AWS WAF to fortify your cloud network. </p>
+</li>
+</ul>
 
                     </main>
 

@@ -371,13 +371,22 @@ docker run -d --rm --network skywalker --name postgres registry/image_name:versi
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="aws"><a class="header" href="#aws">AWS</a></h1>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="ebs"><a class="header" href="#ebs">EBS</a></h1>
 <p><img src="aws/../img/aws-ebs.svg" alt="ebs" /></p>
-<p><strong>Note that</strong> you can attach multiple EBS volumes to a single instance. <em>The volume and instance must be in the same Availability Zone.</em></p>
+<p><strong>Note that</strong></p>
+<ul>
+<li>Amazon EBS can deliver performance for workloads that require the lowest-latency access to data from a single EC2 instance. You can also increase EBS storage for up to 16TB or add new volumes for additional storage.</li>
+<li>You can attach multiple EBS volumes to a single instance. <em>The volume and instance must be in the same Availability Zone.</em></li>
+<li>An EBS volume can only be attached to one EC2 instance at a time.</li>
+<li>EBS volumes support live configuration changes while in production which means that you can modify the volume type, volume size, and IOPS capacity without service interruptions.</li>
+<li>RAID 0 configuration enables you to improve your storage volumes' performance by distributing the I/O across the volumes in a stripe.</li>
+<li>RAID 1 configuration is used for data mirroring.</li>
+</ul>
 <p>Reference</p>
 <p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html</a></p>
 <h4 id="snapshots-encryption"><a class="header" href="#snapshots-encryption">Snapshots Encryption</a></h4>
 <p><img src="aws/../img/aws-ebs-snapshots.svg" alt="ebs-snapshosts" /></p>
 <p>To copy an encrypted snapshot from one AWS Region to another, you must specify the CMK in the destination AWS Region. This is because CMKs are specific to the AWS Region that they are created in.</p>
 <p><strong>Note that</strong> Snapshots are incremental backups, which means that only the blocks on the device that have changed after your most recent snapshot are saved. This minimizes the time required to create the snapshot and saves on storage costs by not duplicating data. Each snapshot contains all of the information that is needed to restore your data (from the moment when the snapshot was taken) to a new EBS volume. </p>
+<p>You can enable EBS Encryption By Default feature for a AWS region in account settings.</p>
 <h2 id="iops-and-disk-throughput"><a class="header" href="#iops-and-disk-throughput">IOPS and Disk Throughput</a></h2>
 <p>AWS measures storage performance in <em>input/output operations per second</em>.</p>
 <p>MySQL and MariaDB have a page size of 16 KB. Hence, writing 16 KB of data to disk would constitute one I/O operation.
@@ -434,6 +443,7 @@ Suppose your MySQL database needs to read 102,400 KB (100 MB) of data every seco
 </li>
 </ul>
 <h3 id="enhanced-networking"><a class="header" href="#enhanced-networking">Enhanced Networking</a></h3>
+<p>Enhanced networking uses single root I/O virtualization (SR-IOV) to provide high-performance networking capabilities on supported instance types. SR-IOV is a method of device virtualization that provides higher I/O performance and lower CPU utilization when compared to traditional virtualized network interfaces. Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistently lower inter-instance latencies. There is no additional charge for using enhanced networking.</p>
 <h4 id="elastic-fabric-adapter-efa"><a class="header" href="#elastic-fabric-adapter-efa">Elastic Fabric Adapter (EFA)</a></h4>
 <ul>
 <li>
@@ -450,6 +460,15 @@ Suppose your MySQL database needs to read 102,400 KB (100 MB) of data every seco
 <ul>
 <li>Elastic Network Adapters (ENAs) provide traditional IP networking features that are required to support VPC networking.</li>
 <li>EFAs provide all of the same traditional IP networking features as ENAs, and they also support OS-bypass capabilities. OS-bypass enables HPC and machine learning applications to bypass the operating system kernel and to communicate directly with the EFA device. </li>
+</ul>
+<h4 id="lifecycle-hook"><a class="header" href="#lifecycle-hook">Lifecycle hook</a></h4>
+<p><img src="https://docs.aws.amazon.com/autoscaling/ec2/userguide/images/auto_scaling_lifecycle.png" alt="Lifecycle hook" /></p>
+<h3 id="elastic-ip-address"><a class="header" href="#elastic-ip-address">Elastic IP address</a></h3>
+<p>An Elastic IP address doesn’t incur charges as long as the following conditions are true:</p>
+<ul>
+<li>The Elastic IP address is associated with an Amazon EC2 instance.</li>
+<li>The instance associated with the Elastic IP address is running.</li>
+<li>The instance has only one Elastic IP address attached to it.</li>
 </ul>
 <h3 id="read-more"><a class="header" href="#read-more">Read More:    	</a></h3>
 <ul>
@@ -674,17 +693,18 @@ source_profile=account1
 <p>A <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html">VPC endpoint</a> enables private connections <strong>between your VPC and supported AWS services</strong> and <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html">VPC endpoint services</a> powered by AWS PrivateLink.</p>
 <p>A VPC endpoint does not require an internet gateway, virtual private gateway, NAT device, VPN connection, or AWS Direct Connect connection. Instances in your VPC do not require public IP addresses to communicate with resources in the service. </p>
 <p>One usecase of VPC endpoint is to <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/vpc-endpoints.html">create VPC endpoints for Amazon ECS</a></p>
+<p>When you create a VPC endpoint, you can attach an endpoint policy that controls access to the service to which you are connecting.</p>
 <h3 id="gateway-endpoint"><a class="header" href="#gateway-endpoint">Gateway endpoint</a></h3>
 <ul>
 <li>Endpoint connections cannot be extended out of a VPC. Resources on the other side of a VPN connection, VPC peering connection, transit gateway, AWS Direct Connect connection, or ClassicLink connection in your VPC cannot use the endpoint to communicate with resources in the endpoint service. </li>
 <li>Endpoints are supported within the same Region only. You cannot create an endpoint between a VPC and a service in a different Region. </li>
 <li>You must turn on DNS resolution in your VPC</li>
 </ul>
-<h3 id="vpc-endpoint-service"><a class="header" href="#vpc-endpoint-service">VPC endpoint service</a></h3>
+<h4 id="vpc-endpoint-service"><a class="header" href="#vpc-endpoint-service">VPC endpoint service</a></h4>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service-overview.html">VPC endpoint serices (AWS PrivateLink</a></li>
 </ul>
-<h2 id="vpc-link"><a class="header" href="#vpc-link">VPC Link</a></h2>
+<h3 id="vpc-link"><a class="header" href="#vpc-link">VPC Link</a></h3>
 <p>You can create an <code>API Gateway API</code> with private integration to provide your customers access to HTTP/HTTPS resources within your Amazon VPC.</p>
 <p>Such VPC resources are HTTP/HTTPS endpoints on an EC2 instance behind a <code>Network Load Balancer</code> in the VPC. The Network Load Balancer encapsulates the VPC resource and routes incoming requests to the targeted resource. </p>
 <ul>
@@ -709,6 +729,8 @@ source_profile=account1
 <li><a href="https://www.gilles.cloud/2020/10/egress-vpc-and-aws-transit-gateway.html">Egress VPC</a></li>
 </ul>
 <h1 id="hybrid-cloud"><a class="header" href="#hybrid-cloud">Hybrid Cloud</a></h1>
+<p><img src="https://d2908q01vomqb2.cloudfront.net/5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/2020/02/02/Multiple-Tunnels.png" alt="EMCP Enabled Transit Gateway" /></p>
+<p>AWS Transit Gateway also enables you to scale the IPsec VPN throughput with equal-cost multi-path (ECMP) routing support over multiple VPN tunnels. A single VPN tunnel still has a maximum throughput of 1.25 Gbps. If you establish multiple VPN tunnels to an ECMP-enabled transit gateway, it can scale beyond the default limit of 1.25 Gbps.</p>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpn/latest/s2svpn/vpn-redundant-connection.html">AWS Site-to-Site VPN</a></li>
 <li><a href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/lags.html">Direct Connect</a></li>
@@ -724,6 +746,11 @@ source_profile=account1
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="elastic-load-balancing"><a class="header" href="#elastic-load-balancing">Elastic Load Balancing</a></h1>
 <h3 id="public-application-load-balancer-with-ec2-auto-scaling-group-in-private-subnet"><a class="header" href="#public-application-load-balancer-with-ec2-auto-scaling-group-in-private-subnet">Public Application Load Balancer with EC2 Auto Scaling Group in Private Subnet</a></h3>
 <p><img src="aws/../img/aws-elb.svg" alt="elb" /></p>
+<ul>
+<li>you can't assign an Elastic IP address to an Application Load Balancer.</li>
+<li>Application Load Balancers support Weighted Target Groups routing. </li>
+<li>Cross-zone load balancing</li>
+</ul>
 <h3 id="read-more-2"><a class="header" href="#read-more-2">Read More</a></h3>
 <ul>
 <li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html">Elastic Load Balancing</a></li>
@@ -767,6 +794,8 @@ source_profile=account1
 <p><img src="aws/../img/aws-53-failover.svg" alt="failover" /></p>
 <p>As Elastic Load Blancer does not support RDS instances, you can, however, use Route 53 <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted">weighted routing</a> policy to distribute traffic across the RDS Read Replicas. In case of a Read Replica health-check failure, Route 53 weighted record will exlcude those adresses in its reponse to a DNS query.</p>
 <p><img src="aws/../img/aws-53-weighted.svg" alt="weighted" /></p>
+<h2 id="routing-policies"><a class="header" href="#routing-policies">Routing Policies</a></h2>
+<p><code>GeoProximity Routing</code> lets Amazon Route 53 route traffic to your resources based on the geographic location of your users and your resources. You can also optionally choose to route more traffic or less to a given resource by specifying a value, known as a bias. A bias expands or shrinks the size of the geographic region from which traffic is routed to a resource.</p>
 <h1 id="bluegreen-deployment"><a class="header" href="#bluegreen-deployment">Blue/Green Deployment</a></h1>
 <p>You can use weighted routing for blue/green deployement. Read more at <a href="https://d1.awsstatic.com/whitepapers/AWS_Blue_Green_Deployments.pdf">Whitepaper: AWS Blue Green Deployment</a></p>
 <p>Reference</p>
@@ -958,6 +987,18 @@ A regional ELB load balancer is an ideal target for AWS Global Accelerator. AWS 
 <li>Amazon SQS</li>
 <li>AWS Lambda</li>
 </ul>
+<h3 id="s3-storage-class"><a class="header" href="#s3-storage-class">S3 Storage Class</a></h3>
+<ul>
+<li>Minimum 30-Day Storage Charge for S3-Intelligent-Tiering, S3 Standard-IA and S3 One Zone-IA.</li>
+<li>Minimum 90-Day Storage Charge for Glacier</li>
+<li>Minimum 180-Day Storage Charge for Glacier Deep Archieve</li>
+<li>Storage Gateway connects to S3, S3 Glacier and Glacier Deep Archive.</li>
+</ul>
+<h3 id="data-transer-cost"><a class="header" href="#data-transer-cost">Data Transer cost</a></h3>
+<ul>
+<li>Data transferred out to an Amazon EC2 instance, when the instance is in the same AWS Region as the S3 bucket (including to a different account in the same AWS region).</li>
+<li>Data transferred out to Amazon CloudFront.</li>
+</ul>
 <h3 id="s3-range-get"><a class="header" href="#s3-range-get">S3 Range GET?</a></h3>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="dynamodb"><a class="header" href="#dynamodb">DynamoDB</a></h1>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="replication--backups"><a class="header" href="#replication--backups">Replication &amp; Backups</a></h1>
@@ -985,7 +1026,7 @@ Point-in-time recovery lets you restore your DynamoDB tables to any point in tim
 <h4 id="multi-az-deployments"><a class="header" href="#multi-az-deployments">Multi-AZ Deployments</a></h4>
 <p>Multi-AZ deployment provides a <em>standby database instance</em> in a different availibity zone that the <em>primary database</em> instance resides.</p>
 <p>RDS synchronously replicates data from the primary to the standby instance. And if the primray instance experiences an outage, it will fail over to the standby instance. </p>
-<p><strong>Note that</strong> in the multi-AZ deployment, all instances resides in the same region. And the standby instance is not a read replica and cannot serve read traffic.</p>
+<p><strong>Note that</strong> in the multi-AZ deployment, all instances resides in the same region. And the standby instance is not a read replica and cannot serve read traffic. And you can't directly connect to the standby instance. This is only used in the event of a database failover when your primary instance encountered an outage</p>
 <h4 id="read-replica"><a class="header" href="#read-replica">Read Replica</a></h4>
 <p>With Amazon RDS, you can create a read replica of the primary database instance in a different AZ even different region.
 However, creating a cross-region read replica isn't supported for SQL Server on Amazon RDS.</p>
@@ -1063,6 +1104,22 @@ table {
 </ul>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="security"><a class="header" href="#security">Security</a></h1>
 <p><img src="aws/../img/aws-security.svg" alt="security" /></p>
+<h2 id="ddos-attack"><a class="header" href="#ddos-attack">DDoS attack</a></h2>
+<p>To protect your system from DDoS attack, you can do the following:</p>
+<ul>
+<li>
+<p>Use an Amazon CloudFront service for distributing both static and dynamic content.</p>
+</li>
+<li>
+<p>Use an Application Load Balancer with Auto Scaling groups for your EC2 instances then restrict direct Internet traffic to your Amazon RDS database by deploying to a private subnet.</p>
+</li>
+<li>
+<p>Set up alerts in Amazon CloudWatch to look for high <code>Network In</code> and CPU utilization metrics.</p>
+</li>
+<li>
+<p>AWS Shield and AWS WAF to fortify your cloud network. </p>
+</li>
+</ul>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="data-encryption-1"><a class="header" href="#data-encryption-1">Data Encryption</a></h1>
 <h2 id="data-at-rest"><a class="header" href="#data-at-rest">Data at Rest</a></h2>
 <p>Data stored in Glacier and Storage Gateway are encrypted by default.</p>
@@ -1074,10 +1131,11 @@ table {
 <li>All traffic between AZs is encrypted.</li>
 <li>All cross-Region traffic that uses Amazon <code>VPC Peering</code> and <code>Transit Gateway peering</code> is automatically bulk-encrypted when it exits a Region. </li>
 <li>Remote access to your instances using <code>AWS Systems Manager</code> Session Manager or the Run Command is encrypted using TLS 1.2.</li>
+<li>AWS DataSync uses TLS 1.2 to encrypt all network traffic</li>
 <li>All data that <code>Storage Gateway</code> transfers to AWS is encrypted in transit and at rest in AWS.</li>
 <li>Use the <code>EFS mount helper</code> to mount a file system so that all NFS traffic is encrypted in transit using Transport Layer Security 1.2 (TLS).</li>
-<li>Amazon Certificate Manager (ACM) to generate a TLS certifi- cate and then install it on an <code>application load balancer</code>, <code>Network load balancer</code> or a <code>CloudFront distribution</code>.</li>
-<li><code>AWS Direct Connect</code> does not encrypt your traffic that is in transit.</li>
+<li>Amazon Certificate Manager (ACM) to generate a TLS certifi- cate and then install it on an <code>application load balancer</code>, <code>Network load balancer</code> or a <code>CloudFront distribution</code>. Also note about <code>SNI</code>.</li>
+<li><code>AWS Direct Connect</code> does not encrypt your traffic that is in transit. You can combine DataSync with Direct Connect for private connectivity.</li>
 <li><code>AWS Direct Connect</code> and AWS Site-to-Site VPN combination  provides an IPsec-encrypted private connection that also reduces network costs, increases bandwidth throughput, and provides a more consistent network experience than internet-based VPN connection</li>
 <li>You can use Secure Socket Layer (SSL) or Transport Layer Security (TLS) from your application to encrypt a connection to a DB instance running MySQL, MariaDB, SQL Server, Oracle, or PostgreSQL. 
 <code>Amazon RDS</code> creates an SSL certificate and installs the certificate on the DB instance when the instance is provisioned. <a href="https://aws.amazon.com/rds/features/security/">Read more</a></li>
@@ -1091,6 +1149,18 @@ table {
 <p>Amazon FSx also integrates with Amazon S3, making it easy for you to process cloud data sets with the Lustre high-performance file system. When linked to an S3 bucket, an FSx for Lustre file system transparently presents S3 objects as files and allows you to write changed data back to S3.</p>
 <ul>
 <li><a href="https://aws.amazon.com/es/fsx/lustre/faqs/?nc=sn&amp;loc=5">FAQ</a></li>
+</ul>
+<h2 id="efs-1"><a class="header" href="#efs-1">EFS</a></h2>
+<ul>
+<li>Allows concurrent connections from multiple EC2 instances</li>
+<li>Amazon EFS provides the scale and performance required for big data applications that require high throughput to compute nodes coupled with read-after-write consistency and low-latency file operations.</li>
+</ul>
+<h3 id="performance-mode"><a class="header" href="#performance-mode">Performance Mode</a></h3>
+<ul>
+<li>Max I/O
+Use the Max I/O performance mode if you have a very high requirement of file system operations per second. </li>
+<li>General Purpose
+General Purpose performance mode has the lower latency of the two performance modes and is suitable if your workload is sensitive to latency. Max I/O performance mode offers a higher number of file system operations per second but has a slightly higher latency per each file system operation. </li>
 </ul>
 <h2 id="aurora-1"><a class="header" href="#aurora-1">Aurora</a></h2>
 <p>You can invoke a <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Lambda.html#AuroraMySQL.Integrating.LambdaAccess">Lambda function from an Amazon Aurora MySQL DB cluster</a>. This approach can be useful when you want to integrate your database running on Aurora MySQL with other AWS services. For example, you might want to send a notification using Amazon Simple Notification Service (Amazon SNS) whenever a row is inserted into a specific table in your database. </p>
@@ -1110,6 +1180,8 @@ table {
 <ul>
 <li>If you have multiple single region trails, consider configuring your trails so that global service events are delivered in only one of the trails.</li>
 </ul>
+<h3 id="data-event"><a class="header" href="#data-event">Data Event</a></h3>
+<p>You can currently log data events on different resource types such as Amazon S3 object-level API activity (e.g. GetObject, DeleteObject, and PutObject API operations), AWS Lambda function execution activity (the Invoke API), DynamoDB Item actions, and many more.</p>
 <p>Read More:</p>
 <ul>
 <li><a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/data-protection.html">Data Protection in AWS CloudTrail</a></li>
@@ -1143,6 +1215,8 @@ table {
 <li><strong>Standard Reserved Instance</strong>, enables modify AZ, scope, networking type and instance size. </li>
 <li><strong>Convertable Reserved Instance</strong>, enables modify instance family, operating system and tenancy.</li>
 </ul>
+<p>You can also go to the AWS Reserved Instance Marketplace and sell the Reserved instances.</p>
+<h3 id="scheduled-reserved-instance"><a class="header" href="#scheduled-reserved-instance">Scheduled Reserved Instance</a></h3>
 <h2 id="spot-instance"><a class="header" href="#spot-instance">Spot Instance</a></h2>
 <p>Spot Instance runs whenever capacity is available and the maximum price per hour for your request exceeds the Spot price. 
 Spot Instances are a cost-effective choice if you can be flexible about when your applications run and if your applications can be interrupted</p>
@@ -1160,13 +1234,73 @@ Spot Instances are a cost-effective choice if you can be flexible about when you
 </ul>
 <h2 id="sns"><a class="header" href="#sns">SNS</a></h2>
 <p><a href="https://aws.amazon.com/blogs/compute/designing-durable-serverless-apps-with-dlqs-for-amazon-sns-amazon-sqs-aws-lambda/">Designing durable serverless apps with DLQs for Amazon SNS, Amazon SQS, AWS Lambda</a></p>
+<h2 id="cloud-watch"><a class="header" href="#cloud-watch">Cloud Watch</a></h2>
+<ul>
+<li>EC2
+<ul>
+<li>CPUUtilization, DisReadOps, DiskWriteOps, NetworkIn/Out</li>
+<li>Detailed monitoring is 1 minutes, Basic monitoring is 5 minute peroids.</li>
+</ul>
+</li>
+<li>RDS
+<ul>
+<li>CPUUtilization, FreeableMemory, Database connections, Read/WriteLatency</li>
+</ul>
+</li>
+<li>Enhanced RDS
+<ul>
+<li>RDS processes, RDS child processes, OS processes	</li>
+</ul>
+</li>
+<li>ECS
+<ul>
+<li>CPUUtiliation/Reservation, MemoryUtilization/Reservation</li>
+</ul>
+</li>
+<li>Cloud Agent
+<ul>
+<li>can be intalled on both Linux and Windows instances</li>
+</ul>
+</li>
+</ul>
+<h2 id="kineise"><a class="header" href="#kineise">Kineise</a></h2>
+<h4 id="kineise-data-stream"><a class="header" href="#kineise-data-stream">Kineise Data Stream</a></h4>
+<p><img src="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_Amazon-Kinesis-Data-Streams.074de94302fd60948e1ad070e425eeda73d350e7.png" alt="Kineise Data Stream" /></p>
+<p>AWS Application Auto Scaling</p>
+<h4 id="kineise-firehose"><a class="header" href="#kineise-firehose">Kineise Firehose</a></h4>
+<p>Destinations:</p>
+<ul>
+<li>S3,</li>
+<li>Redshift </li>
+<li>Amazon Elastic Search</li>
+<li>Http endpoint owned by you</li>
+<li>Thirdparty providers, including Datadog,New Relic and Splunk</li>
+</ul>
+<h3 id="aws-backup"><a class="header" href="#aws-backup">AWS Backup</a></h3>
+<p><img src="https://d1.awsstatic.com/diagrams/fsx/product-page-diagram_cryo_how-it-works@1.5x.21bcc0935a82ac4531d02a4feddf51d6bfbd6080.png" alt="AWS Backup" /></p>
 <h2 id="others"><a class="header" href="#others">Others</a></h2>
 <ul>
 <li>Cloud Search</li>
-<li>AWS Step Functions</li>
+<li>AWS Step Functions
+<ul>
+<li>serverless orchestration for modern applications. </li>
+</ul>
+</li>
+<li>ACM and IAM certificate store
+<ul>
+<li>import third-party certificat</li>
+</ul>
+</li>
+<li>Direct Connect</li>
 <li>AWS Batch</li>
 <li><a href="https://d0.awsstatic.com/whitepapers/aws-kms-best-practices.pdf">AWS KMS</a></li>
 <li><a href="https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html">Disaster Recovery</a></li>
+<li>CloudFormation
+<ul>
+<li><code>CreationPolicy</code> and <code>cfn-signal</code> for associate resources.</li>
+<li><code>updatePolicy</code> is primarily used for updating resources and for stack update rollback operations.</li>
+</ul>
+</li>
 <li>AWS CloudHSM</li>
 <li>Amazon Polly</li>
 <li>Amazon EMR</li>

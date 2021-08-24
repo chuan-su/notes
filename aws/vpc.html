@@ -182,17 +182,18 @@
 <p>A <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html">VPC endpoint</a> enables private connections <strong>between your VPC and supported AWS services</strong> and <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html">VPC endpoint services</a> powered by AWS PrivateLink.</p>
 <p>A VPC endpoint does not require an internet gateway, virtual private gateway, NAT device, VPN connection, or AWS Direct Connect connection. Instances in your VPC do not require public IP addresses to communicate with resources in the service. </p>
 <p>One usecase of VPC endpoint is to <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/vpc-endpoints.html">create VPC endpoints for Amazon ECS</a></p>
+<p>When you create a VPC endpoint, you can attach an endpoint policy that controls access to the service to which you are connecting.</p>
 <h3 id="gateway-endpoint"><a class="header" href="#gateway-endpoint">Gateway endpoint</a></h3>
 <ul>
 <li>Endpoint connections cannot be extended out of a VPC. Resources on the other side of a VPN connection, VPC peering connection, transit gateway, AWS Direct Connect connection, or ClassicLink connection in your VPC cannot use the endpoint to communicate with resources in the endpoint service. </li>
 <li>Endpoints are supported within the same Region only. You cannot create an endpoint between a VPC and a service in a different Region. </li>
 <li>You must turn on DNS resolution in your VPC</li>
 </ul>
-<h3 id="vpc-endpoint-service"><a class="header" href="#vpc-endpoint-service">VPC endpoint service</a></h3>
+<h4 id="vpc-endpoint-service"><a class="header" href="#vpc-endpoint-service">VPC endpoint service</a></h4>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service-overview.html">VPC endpoint serices (AWS PrivateLink</a></li>
 </ul>
-<h2 id="vpc-link"><a class="header" href="#vpc-link">VPC Link</a></h2>
+<h3 id="vpc-link"><a class="header" href="#vpc-link">VPC Link</a></h3>
 <p>You can create an <code>API Gateway API</code> with private integration to provide your customers access to HTTP/HTTPS resources within your Amazon VPC.</p>
 <p>Such VPC resources are HTTP/HTTPS endpoints on an EC2 instance behind a <code>Network Load Balancer</code> in the VPC. The Network Load Balancer encapsulates the VPC resource and routes incoming requests to the targeted resource. </p>
 <ul>
@@ -217,6 +218,8 @@
 <li><a href="https://www.gilles.cloud/2020/10/egress-vpc-and-aws-transit-gateway.html">Egress VPC</a></li>
 </ul>
 <h1 id="hybrid-cloud"><a class="header" href="#hybrid-cloud">Hybrid Cloud</a></h1>
+<p><img src="https://d2908q01vomqb2.cloudfront.net/5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/2020/02/02/Multiple-Tunnels.png" alt="EMCP Enabled Transit Gateway" /></p>
+<p>AWS Transit Gateway also enables you to scale the IPsec VPN throughput with equal-cost multi-path (ECMP) routing support over multiple VPN tunnels. A single VPN tunnel still has a maximum throughput of 1.25 Gbps. If you establish multiple VPN tunnels to an ECMP-enabled transit gateway, it can scale beyond the default limit of 1.25 Gbps.</p>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpn/latest/s2svpn/vpn-redundant-connection.html">AWS Site-to-Site VPN</a></li>
 <li><a href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/lags.html">Direct Connect</a></li>

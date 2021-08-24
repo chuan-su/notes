@@ -176,10 +176,11 @@
 <li>All traffic between AZs is encrypted.</li>
 <li>All cross-Region traffic that uses Amazon <code>VPC Peering</code> and <code>Transit Gateway peering</code> is automatically bulk-encrypted when it exits a Region. </li>
 <li>Remote access to your instances using <code>AWS Systems Manager</code> Session Manager or the Run Command is encrypted using TLS 1.2.</li>
+<li>AWS DataSync uses TLS 1.2 to encrypt all network traffic</li>
 <li>All data that <code>Storage Gateway</code> transfers to AWS is encrypted in transit and at rest in AWS.</li>
 <li>Use the <code>EFS mount helper</code> to mount a file system so that all NFS traffic is encrypted in transit using Transport Layer Security 1.2 (TLS).</li>
-<li>Amazon Certificate Manager (ACM) to generate a TLS certifi- cate and then install it on an <code>application load balancer</code>, <code>Network load balancer</code> or a <code>CloudFront distribution</code>.</li>
-<li><code>AWS Direct Connect</code> does not encrypt your traffic that is in transit.</li>
+<li>Amazon Certificate Manager (ACM) to generate a TLS certifi- cate and then install it on an <code>application load balancer</code>, <code>Network load balancer</code> or a <code>CloudFront distribution</code>. Also note about <code>SNI</code>.</li>
+<li><code>AWS Direct Connect</code> does not encrypt your traffic that is in transit. You can combine DataSync with Direct Connect for private connectivity.</li>
 <li><code>AWS Direct Connect</code> and AWS Site-to-Site VPN combination  provides an IPsec-encrypted private connection that also reduces network costs, increases bandwidth throughput, and provides a more consistent network experience than internet-based VPN connection</li>
 <li>You can use Secure Socket Layer (SSL) or Transport Layer Security (TLS) from your application to encrypt a connection to a DB instance running MySQL, MariaDB, SQL Server, Oracle, or PostgreSQL. 
 <code>Amazon RDS</code> creates an SSL certificate and installs the certificate on the DB instance when the instance is provisioned. <a href="https://aws.amazon.com/rds/features/security/">Read more</a></li>

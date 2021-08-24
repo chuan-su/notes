@@ -190,7 +190,7 @@ Point-in-time recovery lets you restore your DynamoDB tables to any point in tim
 <h4 id="multi-az-deployments"><a class="header" href="#multi-az-deployments">Multi-AZ Deployments</a></h4>
 <p>Multi-AZ deployment provides a <em>standby database instance</em> in a different availibity zone that the <em>primary database</em> instance resides.</p>
 <p>RDS synchronously replicates data from the primary to the standby instance. And if the primray instance experiences an outage, it will fail over to the standby instance. </p>
-<p><strong>Note that</strong> in the multi-AZ deployment, all instances resides in the same region. And the standby instance is not a read replica and cannot serve read traffic.</p>
+<p><strong>Note that</strong> in the multi-AZ deployment, all instances resides in the same region. And the standby instance is not a read replica and cannot serve read traffic. And you can't directly connect to the standby instance. This is only used in the event of a database failover when your primary instance encountered an outage</p>
 <h4 id="read-replica"><a class="header" href="#read-replica">Read Replica</a></h4>
 <p>With Amazon RDS, you can create a read replica of the primary database instance in a different AZ even different region.
 However, creating a cross-region read replica isn't supported for SQL Server on Amazon RDS.</p>

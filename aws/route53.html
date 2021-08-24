@@ -170,6 +170,8 @@
 <p><img src="../img/aws-53-failover.svg" alt="failover" /></p>
 <p>As Elastic Load Blancer does not support RDS instances, you can, however, use Route 53 <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted">weighted routing</a> policy to distribute traffic across the RDS Read Replicas. In case of a Read Replica health-check failure, Route 53 weighted record will exlcude those adresses in its reponse to a DNS query.</p>
 <p><img src="../img/aws-53-weighted.svg" alt="weighted" /></p>
+<h2 id="routing-policies"><a class="header" href="#routing-policies">Routing Policies</a></h2>
+<p><code>GeoProximity Routing</code> lets Amazon Route 53 route traffic to your resources based on the geographic location of your users and your resources. You can also optionally choose to route more traffic or less to a given resource by specifying a value, known as a bias. A bias expands or shrinks the size of the geographic region from which traffic is routed to a resource.</p>
 <h1 id="bluegreen-deployment"><a class="header" href="#bluegreen-deployment">Blue/Green Deployment</a></h1>
 <p>You can use weighted routing for blue/green deployement. Read more at <a href="https://d1.awsstatic.com/whitepapers/AWS_Blue_Green_Deployments.pdf">Whitepaper: AWS Blue Green Deployment</a></p>
 <p>Reference</p>

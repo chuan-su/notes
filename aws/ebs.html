@@ -167,13 +167,22 @@
                     <main>
                         <h1 id="ebs"><a class="header" href="#ebs">EBS</a></h1>
 <p><img src="../img/aws-ebs.svg" alt="ebs" /></p>
-<p><strong>Note that</strong> you can attach multiple EBS volumes to a single instance. <em>The volume and instance must be in the same Availability Zone.</em></p>
+<p><strong>Note that</strong></p>
+<ul>
+<li>Amazon EBS can deliver performance for workloads that require the lowest-latency access to data from a single EC2 instance. You can also increase EBS storage for up to 16TB or add new volumes for additional storage.</li>
+<li>You can attach multiple EBS volumes to a single instance. <em>The volume and instance must be in the same Availability Zone.</em></li>
+<li>An EBS volume can only be attached to one EC2 instance at a time.</li>
+<li>EBS volumes support live configuration changes while in production which means that you can modify the volume type, volume size, and IOPS capacity without service interruptions.</li>
+<li>RAID 0 configuration enables you to improve your storage volumes' performance by distributing the I/O across the volumes in a stripe.</li>
+<li>RAID 1 configuration is used for data mirroring.</li>
+</ul>
 <p>Reference</p>
 <p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html</a></p>
 <h4 id="snapshots-encryption"><a class="header" href="#snapshots-encryption">Snapshots Encryption</a></h4>
 <p><img src="../img/aws-ebs-snapshots.svg" alt="ebs-snapshosts" /></p>
 <p>To copy an encrypted snapshot from one AWS Region to another, you must specify the CMK in the destination AWS Region. This is because CMKs are specific to the AWS Region that they are created in.</p>
 <p><strong>Note that</strong> Snapshots are incremental backups, which means that only the blocks on the device that have changed after your most recent snapshot are saved. This minimizes the time required to create the snapshot and saves on storage costs by not duplicating data. Each snapshot contains all of the information that is needed to restore your data (from the moment when the snapshot was taken) to a new EBS volume. </p>
+<p>You can enable EBS Encryption By Default feature for a AWS region in account settings.</p>
 <h2 id="iops-and-disk-throughput"><a class="header" href="#iops-and-disk-throughput">IOPS and Disk Throughput</a></h2>
 <p>AWS measures storage performance in <em>input/output operations per second</em>.</p>
 <p>MySQL and MariaDB have a page size of 16 KB. Hence, writing 16 KB of data to disk would constitute one I/O operation.

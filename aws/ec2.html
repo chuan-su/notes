@@ -204,6 +204,7 @@
 </li>
 </ul>
 <h3 id="enhanced-networking"><a class="header" href="#enhanced-networking">Enhanced Networking</a></h3>
+<p>Enhanced networking uses single root I/O virtualization (SR-IOV) to provide high-performance networking capabilities on supported instance types. SR-IOV is a method of device virtualization that provides higher I/O performance and lower CPU utilization when compared to traditional virtualized network interfaces. Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistently lower inter-instance latencies. There is no additional charge for using enhanced networking.</p>
 <h4 id="elastic-fabric-adapter-efa"><a class="header" href="#elastic-fabric-adapter-efa">Elastic Fabric Adapter (EFA)</a></h4>
 <ul>
 <li>
@@ -220,6 +221,15 @@
 <ul>
 <li>Elastic Network Adapters (ENAs) provide traditional IP networking features that are required to support VPC networking.</li>
 <li>EFAs provide all of the same traditional IP networking features as ENAs, and they also support OS-bypass capabilities. OS-bypass enables HPC and machine learning applications to bypass the operating system kernel and to communicate directly with the EFA device. </li>
+</ul>
+<h4 id="lifecycle-hook"><a class="header" href="#lifecycle-hook">Lifecycle hook</a></h4>
+<p><img src="https://docs.aws.amazon.com/autoscaling/ec2/userguide/images/auto_scaling_lifecycle.png" alt="Lifecycle hook" /></p>
+<h3 id="elastic-ip-address"><a class="header" href="#elastic-ip-address">Elastic IP address</a></h3>
+<p>An Elastic IP address doesn’t incur charges as long as the following conditions are true:</p>
+<ul>
+<li>The Elastic IP address is associated with an Amazon EC2 instance.</li>
+<li>The instance associated with the Elastic IP address is running.</li>
+<li>The instance has only one Elastic IP address attached to it.</li>
 </ul>
 <h3 id="read-more"><a class="header" href="#read-more">Read More:    	</a></h3>
 <ul>

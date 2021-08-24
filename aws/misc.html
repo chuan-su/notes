@@ -170,6 +170,18 @@
 <ul>
 <li><a href="https://aws.amazon.com/es/fsx/lustre/faqs/?nc=sn&amp;loc=5">FAQ</a></li>
 </ul>
+<h2 id="efs"><a class="header" href="#efs">EFS</a></h2>
+<ul>
+<li>Allows concurrent connections from multiple EC2 instances</li>
+<li>Amazon EFS provides the scale and performance required for big data applications that require high throughput to compute nodes coupled with read-after-write consistency and low-latency file operations.</li>
+</ul>
+<h3 id="performance-mode"><a class="header" href="#performance-mode">Performance Mode</a></h3>
+<ul>
+<li>Max I/O
+Use the Max I/O performance mode if you have a very high requirement of file system operations per second. </li>
+<li>General Purpose
+General Purpose performance mode has the lower latency of the two performance modes and is suitable if your workload is sensitive to latency. Max I/O performance mode offers a higher number of file system operations per second but has a slightly higher latency per each file system operation. </li>
+</ul>
 <h2 id="aurora"><a class="header" href="#aurora">Aurora</a></h2>
 <p>You can invoke a <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Lambda.html#AuroraMySQL.Integrating.LambdaAccess">Lambda function from an Amazon Aurora MySQL DB cluster</a>. This approach can be useful when you want to integrate your database running on Aurora MySQL with other AWS services. For example, you might want to send a notification using Amazon Simple Notification Service (Amazon SNS) whenever a row is inserted into a specific table in your database. </p>
 <p>To invoke a Lambda, the Aurora DB cluster must: </p>
@@ -188,6 +200,8 @@
 <ul>
 <li>If you have multiple single region trails, consider configuring your trails so that global service events are delivered in only one of the trails.</li>
 </ul>
+<h3 id="data-event"><a class="header" href="#data-event">Data Event</a></h3>
+<p>You can currently log data events on different resource types such as Amazon S3 object-level API activity (e.g. GetObject, DeleteObject, and PutObject API operations), AWS Lambda function execution activity (the Invoke API), DynamoDB Item actions, and many more.</p>
 <p>Read More:</p>
 <ul>
 <li><a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/data-protection.html">Data Protection in AWS CloudTrail</a></li>
@@ -221,6 +235,8 @@
 <li><strong>Standard Reserved Instance</strong>, enables modify AZ, scope, networking type and instance size. </li>
 <li><strong>Convertable Reserved Instance</strong>, enables modify instance family, operating system and tenancy.</li>
 </ul>
+<p>You can also go to the AWS Reserved Instance Marketplace and sell the Reserved instances.</p>
+<h3 id="scheduled-reserved-instance"><a class="header" href="#scheduled-reserved-instance">Scheduled Reserved Instance</a></h3>
 <h2 id="spot-instance"><a class="header" href="#spot-instance">Spot Instance</a></h2>
 <p>Spot Instance runs whenever capacity is available and the maximum price per hour for your request exceeds the Spot price. 
 Spot Instances are a cost-effective choice if you can be flexible about when your applications run and if your applications can be interrupted</p>
@@ -238,13 +254,73 @@ Spot Instances are a cost-effective choice if you can be flexible about when you
 </ul>
 <h2 id="sns"><a class="header" href="#sns">SNS</a></h2>
 <p><a href="https://aws.amazon.com/blogs/compute/designing-durable-serverless-apps-with-dlqs-for-amazon-sns-amazon-sqs-aws-lambda/">Designing durable serverless apps with DLQs for Amazon SNS, Amazon SQS, AWS Lambda</a></p>
+<h2 id="cloud-watch"><a class="header" href="#cloud-watch">Cloud Watch</a></h2>
+<ul>
+<li>EC2
+<ul>
+<li>CPUUtilization, DisReadOps, DiskWriteOps, NetworkIn/Out</li>
+<li>Detailed monitoring is 1 minutes, Basic monitoring is 5 minute peroids.</li>
+</ul>
+</li>
+<li>RDS
+<ul>
+<li>CPUUtilization, FreeableMemory, Database connections, Read/WriteLatency</li>
+</ul>
+</li>
+<li>Enhanced RDS
+<ul>
+<li>RDS processes, RDS child processes, OS processes	</li>
+</ul>
+</li>
+<li>ECS
+<ul>
+<li>CPUUtiliation/Reservation, MemoryUtilization/Reservation</li>
+</ul>
+</li>
+<li>Cloud Agent
+<ul>
+<li>can be intalled on both Linux and Windows instances</li>
+</ul>
+</li>
+</ul>
+<h2 id="kineise"><a class="header" href="#kineise">Kineise</a></h2>
+<h4 id="kineise-data-stream"><a class="header" href="#kineise-data-stream">Kineise Data Stream</a></h4>
+<p><img src="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_Amazon-Kinesis-Data-Streams.074de94302fd60948e1ad070e425eeda73d350e7.png" alt="Kineise Data Stream" /></p>
+<p>AWS Application Auto Scaling</p>
+<h4 id="kineise-firehose"><a class="header" href="#kineise-firehose">Kineise Firehose</a></h4>
+<p>Destinations:</p>
+<ul>
+<li>S3,</li>
+<li>Redshift </li>
+<li>Amazon Elastic Search</li>
+<li>Http endpoint owned by you</li>
+<li>Thirdparty providers, including Datadog,New Relic and Splunk</li>
+</ul>
+<h3 id="aws-backup"><a class="header" href="#aws-backup">AWS Backup</a></h3>
+<p><img src="https://d1.awsstatic.com/diagrams/fsx/product-page-diagram_cryo_how-it-works@1.5x.21bcc0935a82ac4531d02a4feddf51d6bfbd6080.png" alt="AWS Backup" /></p>
 <h2 id="others"><a class="header" href="#others">Others</a></h2>
 <ul>
 <li>Cloud Search</li>
-<li>AWS Step Functions</li>
+<li>AWS Step Functions
+<ul>
+<li>serverless orchestration for modern applications. </li>
+</ul>
+</li>
+<li>ACM and IAM certificate store
+<ul>
+<li>import third-party certificat</li>
+</ul>
+</li>
+<li>Direct Connect</li>
 <li>AWS Batch</li>
 <li><a href="https://d0.awsstatic.com/whitepapers/aws-kms-best-practices.pdf">AWS KMS</a></li>
 <li><a href="https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html">Disaster Recovery</a></li>
+<li>CloudFormation
+<ul>
+<li><code>CreationPolicy</code> and <code>cfn-signal</code> for associate resources.</li>
+<li><code>updatePolicy</code> is primarily used for updating resources and for stack update rollback operations.</li>
+</ul>
+</li>
 <li>AWS CloudHSM</li>
 <li>Amazon Polly</li>
 <li>Amazon EMR</li>
