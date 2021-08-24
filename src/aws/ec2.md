@@ -35,6 +35,8 @@ Note that:
 
 ### Enhanced Networking
 
+Enhanced networking uses single root I/O virtualization (SR-IOV) to provide high-performance networking capabilities on supported instance types. SR-IOV is a method of device virtualization that provides higher I/O performance and lower CPU utilization when compared to traditional virtualized network interfaces. Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistently lower inter-instance latencies. There is no additional charge for using enhanced networking.
+
 #### Elastic Fabric Adapter (EFA)
 
 - EFA OS-bypass traffic is limited to a single subnet. In other words, EFA traffic cannot be sent from one subnet to another. Normal IP traffic from the EFA can be sent from one subnet to another.
@@ -47,6 +49,17 @@ Note that:
 
 - Elastic Network Adapters (ENAs) provide traditional IP networking features that are required to support VPC networking.
 - EFAs provide all of the same traditional IP networking features as ENAs, and they also support OS-bypass capabilities. OS-bypass enables HPC and machine learning applications to bypass the operating system kernel and to communicate directly with the EFA device. 
+
+#### Lifecycle hook 
+
+![Lifecycle hook](https://docs.aws.amazon.com/autoscaling/ec2/userguide/images/auto_scaling_lifecycle.png)
+
+### Elastic IP address
+An Elastic IP address doesn’t incur charges as long as the following conditions are true:
+
+- The Elastic IP address is associated with an Amazon EC2 instance.
+- The instance associated with the Elastic IP address is running.
+- The instance has only one Elastic IP address attached to it.
 
 ### Read More:    	
 

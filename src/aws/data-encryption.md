@@ -16,10 +16,11 @@ However, because you can encrypt a copy of an unencrypted snapshot, you can effe
 - All traffic between AZs is encrypted.
 - All cross-Region traffic that uses Amazon `VPC Peering` and `Transit Gateway peering` is automatically bulk-encrypted when it exits a Region. 
 - Remote access to your instances using `AWS Systems Manager` Session Manager or the Run Command is encrypted using TLS 1.2.
+- AWS DataSync uses TLS 1.2 to encrypt all network traffic
 - All data that `Storage Gateway` transfers to AWS is encrypted in transit and at rest in AWS.
 - Use the `EFS mount helper` to mount a file system so that all NFS traffic is encrypted in transit using Transport Layer Security 1.2 (TLS).
-- Amazon Certificate Manager (ACM) to generate a TLS certifi- cate and then install it on an `application load balancer`, `Network load balancer` or a `CloudFront distribution`.
-- `AWS Direct Connect` does not encrypt your traffic that is in transit.
+- Amazon Certificate Manager (ACM) to generate a TLS certifi- cate and then install it on an `application load balancer`, `Network load balancer` or a `CloudFront distribution`. Also note about `SNI`.
+- `AWS Direct Connect` does not encrypt your traffic that is in transit. You can combine DataSync with Direct Connect for private connectivity.
 - `AWS Direct Connect` and AWS Site-to-Site VPN combination  provides an IPsec-encrypted private connection that also reduces network costs, increases bandwidth throughput, and provides a more consistent network experience than internet-based VPN connection
 - You can use Secure Socket Layer (SSL) or Transport Layer Security (TLS) from your application to encrypt a connection to a DB instance running MySQL, MariaDB, SQL Server, Oracle, or PostgreSQL. 
  `Amazon RDS` creates an SSL certificate and installs the certificate on the DB instance when the instance is provisioned. [Read more](https://aws.amazon.com/rds/features/security/)

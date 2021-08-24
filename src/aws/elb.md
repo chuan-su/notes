@@ -5,6 +5,10 @@
 ![elb](../img/aws-elb.svg)
 
 
+- you can't assign an Elastic IP address to an Application Load Balancer.
+- Application Load Balancers support Weighted Target Groups routing. 
+- Cross-zone load balancing
+
 ### Read More
 
 - [Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html)

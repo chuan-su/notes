@@ -4,12 +4,23 @@ Amazon FSx also integrates with Amazon S3, making it easy for you to process clo
 
 - [FAQ](https://aws.amazon.com/es/fsx/lustre/faqs/?nc=sn&loc=5)
 
+## EFS
+- Allows concurrent connections from multiple EC2 instances
+- Amazon EFS provides the scale and performance required for big data applications that require high throughput to compute nodes coupled with read-after-write consistency and low-latency file operations.
+### Performance Mode
+- Max I/O
+   Use the Max I/O performance mode if you have a very high requirement of file system operations per second. 
+- General Purpose
+  General Purpose performance mode has the lower latency of the two performance modes and is suitable if your workload is sensitive to latency. Max I/O performance mode offers a higher number of file system operations per second but has a slightly higher latency per each file system operation. 
+
 ## Aurora
+
 You can invoke a [Lambda function from an Amazon Aurora MySQL DB cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Lambda.html#AuroraMySQL.Integrating.LambdaAccess). This approach can be useful when you want to integrate your database running on Aurora MySQL with other AWS services. For example, you might want to send a notification using Amazon Simple Notification Service (Amazon SNS) whenever a row is inserted into a specific table in your database. 
 
 To invoke a Lambda, the Aurora DB cluster must: 
 - Create an IAM role, and attach the IAM polcy for providing permissions that allow Aurora DB cluster to invoke Lambda functions.
 - Configure your Aurora MySQL DB cluster to allow outbound connections to Lambda. 
+
 
 ## Elatic Beanstalk
 
@@ -25,6 +36,9 @@ To avoid receiving duplicate global service events,
 
 - If you have multiple single region trails, consider configuring your trails so that global service events are delivered in only one of the trails.
 
+### Data Event
+
+You can currently log data events on different resource types such as Amazon S3 object-level API activity (e.g. GetObject, DeleteObject, and PutObject API operations), AWS Lambda function execution activity (the Invoke API), DynamoDB Item actions, and many more.
 
 Read More:
 
@@ -50,6 +64,11 @@ The main distinction between RIs and Savings Plans is the former commits to numb
 - **Standard Reserved Instance**, enables modify AZ, scope, networking type and instance size. 
 - **Convertable Reserved Instance**, enables modify instance family, operating system and tenancy.
 
+
+You can also go to the AWS Reserved Instance Marketplace and sell the Reserved instances.
+
+### Scheduled Reserved Instance
+
 ## Spot Instance
 
 Spot Instance runs whenever capacity is available and the maximum price per hour for your request exceeds the Spot price. 
@@ -71,12 +90,52 @@ Spot Instances are a cost-effective choice if you can be flexible about when you
 
 [Designing durable serverless apps with DLQs for Amazon SNS, Amazon SQS, AWS Lambda](https://aws.amazon.com/blogs/compute/designing-durable-serverless-apps-with-dlqs-for-amazon-sns-amazon-sqs-aws-lambda/)
 
+## Cloud Watch
+- EC2
+   - CPUUtilization, DisReadOps, DiskWriteOps, NetworkIn/Out
+   - Detailed monitoring is 1 minutes, Basic monitoring is 5 minute peroids.
+- RDS
+   - CPUUtilization, FreeableMemory, Database connections, Read/WriteLatency
+- Enhanced RDS
+   - RDS processes, RDS child processes, OS processes	
+- ECS
+   - CPUUtiliation/Reservation, MemoryUtilization/Reservation
+- Cloud Agent
+    - can be intalled on both Linux and Windows instances
+
+## Kineise
+
+#### Kineise Data Stream
+
+![Kineise Data Stream](https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_Amazon-Kinesis-Data-Streams.074de94302fd60948e1ad070e425eeda73d350e7.png)
+
+AWS Application Auto Scaling
+
+#### Kineise Firehose
+Destinations:
+ - S3,
+ - Redshift 
+ - Amazon Elastic Search
+ - Http endpoint owned by you
+ - Thirdparty providers, including Datadog,New Relic and Splunk
+
+### AWS Backup 
+![AWS Backup](https://d1.awsstatic.com/diagrams/fsx/product-page-diagram_cryo_how-it-works@1.5x.21bcc0935a82ac4531d02a4feddf51d6bfbd6080.png)
+
+
 ## Others
 - Cloud Search
 - AWS Step Functions
+    - serverless orchestration for modern applications. 
+- ACM and IAM certificate store
+    - import third-party certificat
+- Direct Connect
 - AWS Batch
 - [AWS KMS](https://d0.awsstatic.com/whitepapers/aws-kms-best-practices.pdf)
 - [Disaster Recovery](https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html)
+- CloudFormation
+    - `CreationPolicy` and `cfn-signal` for associate resources.
+    - `updatePolicy` is primarily used for updating resources and for stack update rollback operations.
 - AWS CloudHSM
 - Amazon Polly
 - Amazon EMR

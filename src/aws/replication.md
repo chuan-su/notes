@@ -42,7 +42,8 @@ Multi-AZ deployment provides a *standby database instance* in a different availi
 
 RDS synchronously replicates data from the primary to the standby instance. And if the primray instance experiences an outage, it will fail over to the standby instance. 
 
-**Note that** in the multi-AZ deployment, all instances resides in the same region. And the standby instance is not a read replica and cannot serve read traffic.
+**Note that** in the multi-AZ deployment, all instances resides in the same region. And the standby instance is not a read replica and cannot serve read traffic. And you can't directly connect to the standby instance. This is only used in the event of a database failover when your primary instance encountered an outage
+
 
 #### Read Replica
 

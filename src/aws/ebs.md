@@ -2,7 +2,13 @@
 
 ![ebs](../img/aws-ebs.svg)
 
-**Note that** you can attach multiple EBS volumes to a single instance. *The volume and instance must be in the same Availability Zone.*
+**Note that**
+- Amazon EBS can deliver performance for workloads that require the lowest-latency access to data from a single EC2 instance. You can also increase EBS storage for up to 16TB or add new volumes for additional storage.
+- You can attach multiple EBS volumes to a single instance. *The volume and instance must be in the same Availability Zone.*
+- An EBS volume can only be attached to one EC2 instance at a time.
+- EBS volumes support live configuration changes while in production which means that you can modify the volume type, volume size, and IOPS capacity without service interruptions.
+- RAID 0 configuration enables you to improve your storage volumes' performance by distributing the I/O across the volumes in a stripe.  
+- RAID 1 configuration is used for data mirroring.
 
 Reference
 
@@ -16,6 +22,7 @@ To copy an encrypted snapshot from one AWS Region to another, you must specify t
 
 **Note that** Snapshots are incremental backups, which means that only the blocks on the device that have changed after your most recent snapshot are saved. This minimizes the time required to create the snapshot and saves on storage costs by not duplicating data. Each snapshot contains all of the information that is needed to restore your data (from the moment when the snapshot was taken) to a new EBS volume. 
 
+You can enable EBS Encryption By Default feature for a AWS region in account settings.
 
 ## IOPS and Disk Throughput
 

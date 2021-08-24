@@ -8,6 +8,10 @@ As Elastic Load Blancer does not support RDS instances, you can, however, use Ro
 
 ![weighted](../img/aws-53-weighted.svg)
 
+## Routing Policies
+
+`GeoProximity Routing` lets Amazon Route 53 route traffic to your resources based on the geographic location of your users and your resources. You can also optionally choose to route more traffic or less to a given resource by specifying a value, known as a bias. A bias expands or shrinks the size of the geographic region from which traffic is routed to a resource.
+
 # Blue/Green Deployment
 
 You can use weighted routing for blue/green deployement. Read more at [Whitepaper: AWS Blue Green Deployment](https://d1.awsstatic.com/whitepapers/AWS_Blue_Green_Deployments.pdf)
@@ -23,3 +27,5 @@ Read more
 
 - [Routing internet traffic to AWS resources using Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-aws-resources.html)
 - [Cross-Region DNS-Based Load Balancing and Failover](https://docs.aws.amazon.com/whitepapers/latest/real-time-communication-on-aws/cross-region-dns-based-load-balancing-and-failover.html)
+
+

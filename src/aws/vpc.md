@@ -32,17 +32,19 @@ A VPC endpoint does not require an internet gateway, virtual private gateway, NA
 
 One usecase of VPC endpoint is to [create VPC endpoints for Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/vpc-endpoints.html)
 
+When you create a VPC endpoint, you can attach an endpoint policy that controls access to the service to which you are connecting.
+
 ### Gateway endpoint
 
 - Endpoint connections cannot be extended out of a VPC. Resources on the other side of a VPN connection, VPC peering connection, transit gateway, AWS Direct Connect connection, or ClassicLink connection in your VPC cannot use the endpoint to communicate with resources in the endpoint service. 
 - Endpoints are supported within the same Region only. You cannot create an endpoint between a VPC and a service in a different Region. 
 - You must turn on DNS resolution in your VPC
 
-### VPC endpoint service
+#### VPC endpoint service
 
 - [VPC endpoint serices (AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service-overview.html)
 
-## VPC Link
+### VPC Link
 
 You can create an `API Gateway API` with private integration to provide your customers access to HTTP/HTTPS resources within your Amazon VPC.
 
@@ -72,6 +74,10 @@ then instances in VPC B cannot use the connection to access resources on the oth
 - [Egress VPC](https://www.gilles.cloud/2020/10/egress-vpc-and-aws-transit-gateway.html)
 
 # Hybrid Cloud
+
+![EMCP Enabled Transit Gateway](https://d2908q01vomqb2.cloudfront.net/5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/2020/02/02/Multiple-Tunnels.png)
+
+AWS Transit Gateway also enables you to scale the IPsec VPN throughput with equal-cost multi-path (ECMP) routing support over multiple VPN tunnels. A single VPN tunnel still has a maximum throughput of 1.25 Gbps. If you establish multiple VPN tunnels to an ECMP-enabled transit gateway, it can scale beyond the default limit of 1.25 Gbps.
 
 - [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/vpn-redundant-connection.html)
 - [Direct Connect](https://docs.aws.amazon.com/directconnect/latest/UserGuide/lags.html)
