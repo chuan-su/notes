@@ -72,9 +72,9 @@ api:
         content:
           application/json:
             schema: 
-              $ref: '#/components/responses/UpdatePetResponse'
+              $ref: '#/components/schemas/UpdatePetResponse'
       '404':
-        $ref: 'common.yaml#/components/responses/BadRequest'
+        $ref: 'common.yaml#/components/schemas/BadRequest'
   delete:
     # .....
 
@@ -85,7 +85,7 @@ components:
       properties:
         name:
           type: string
-        type:
+        category:
           $ref: '#/components/schemas/PetType'
     UpdatePetResponse:
       # ....    
