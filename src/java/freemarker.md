@@ -115,7 +115,7 @@ public class ClientNotificationMojo extends AbstractMojo {
   }
 }
 ```
-## Read the YAML specification from the Java Mojo Class
+### Read the YAML specification from the Java Mojo Class
 
 If the `YAML` specifications is published to Maven artifact repository, such as Nexus, as `zip` format, we can use `maven-dependecy-plugin` to unpack the zip file.
 
@@ -204,8 +204,6 @@ public class ExampleJava {
 Then in our Java Mojo class, we can process the template and generate the `ExampleJava.java` source file:
 
 ```java
-
-  project.addCompileSourceRoot(outputDirectory.getAbsolutePath());
   Configuration cfg = new Configuration(Configuration.VERSION_2_3_29);
   cfg.setNumberFormat("computer");
 
