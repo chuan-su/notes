@@ -7,6 +7,7 @@
     - [foldleft](java/foldleft.md)
     - [Spring Actuator](java/spring-actuator.md)
     - [Swagger](java/swagger.md)
+    - [FreeMarker](java/freemarker.md)
 - [Docker](docker/README.md)
     - [Dockerfile](docker/dockerfile.md)
     - [volume](docker/volume.md)
