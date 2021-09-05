@@ -257,7 +257,7 @@ public class ClientNotificationMojo extends AbstractMojo {
   }
 }
 </code></pre>
-<h2 id="read-the-yaml-specification-from-the-java-mojo-class"><a class="header" href="#read-the-yaml-specification-from-the-java-mojo-class">Read the YAML specification from the Java Mojo Class</a></h2>
+<h3 id="read-the-yaml-specification-from-the-java-mojo-class"><a class="header" href="#read-the-yaml-specification-from-the-java-mojo-class">Read the YAML specification from the Java Mojo Class</a></h3>
 <p>If the <code>YAML</code> specifications is published to Maven artifact repository, such as Nexus, as <code>zip</code> format, we can use <code>maven-dependecy-plugin</code> to unpack the zip file.</p>
 <pre><code class="language-xml"> &lt;build&gt;
     &lt;plugins&gt;
@@ -328,9 +328,7 @@ public class ExampleJava {
 }
 </code></pre>
 <p>Then in our Java Mojo class, we can process the template and generate the <code>ExampleJava.java</code> source file:</p>
-<pre><code class="language-java">
-  project.addCompileSourceRoot(outputDirectory.getAbsolutePath());
-  Configuration cfg = new Configuration(Configuration.VERSION_2_3_29);
+<pre><code class="language-java">  Configuration cfg = new Configuration(Configuration.VERSION_2_3_29);
   cfg.setNumberFormat(&quot;computer&quot;);
 
   try {
