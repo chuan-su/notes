@@ -4,39 +4,25 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title></title>
-        
         <meta name="robots" content="noindex" />
-        
-        
 
 
         <!-- Custom HTML head -->
         
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="favicon.svg">
-        
-        
         <link rel="shortcut icon" href="favicon.png">
-        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
-        
         <link rel="stylesheet" href="css/print.css" media="print">
-        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -44,19 +30,18 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -72,7 +57,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -84,12 +69,14 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -105,8 +92,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -116,34 +102,27 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title"></h1>
 
                     <div class="right-buttons">
-                        
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
-                        
-                        
 
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
@@ -154,10 +133,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -169,8 +147,8 @@
                     <main>
                         <h1 id="chuans-notes"><a class="header" href="#chuans-notes">Chuan's Notes</a></h1>
 <p>I take notes here about the problems I solved !</p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="java"><a class="header" href="#java">Java</a></h1>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="reduce-in-java"><a class="header" href="#reduce-in-java"><code>reduce</code> in Java</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="java"><a class="header" href="#java">Java</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reduce-in-java"><a class="header" href="#reduce-in-java"><code>reduce</code> in Java</a></h1>
 <p>The <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#reduce-T-java.util.function.BinaryOperator-">reduce</a> function below will just work fine.</p>
 <pre><code class="language-java">Integer sum = integers.reduce(0, (a, b) -&gt; a+b);
 
@@ -196,7 +174,7 @@ double sum = transactions.stream()
 
 </code></pre>
 <p>The arguments of our accumulator above has different types which are of <code>Transaction</code> and <code>Double</code>. Therefore, we need the third combiner.</p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="foldleft-in-java"><a class="header" href="#foldleft-in-java"><code>foldLeft</code> in Java</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="foldleft-in-java"><a class="header" href="#foldleft-in-java"><code>foldLeft</code> in Java</a></h1>
 <p>In Java, you can use the <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collector.html">Collector</a> interface to perform <em>reduction</em> operations on a collection, which is similar to the <code>foldLeft</code> function in Scala.</p>
 <pre><code class="language-java">static &lt;T,R&gt; Collector&lt;T,R,R&gt; of(Supplier&lt;R&gt; supplier,
                                  BiConsumer&lt;R,T&gt; accumulator,
@@ -233,7 +211,7 @@ Map&lt;String, Double&gt; customers = bankAccounts.stream()
         Collectors.summingDouble(BankAccount::getBalance)));
 
 </code></pre>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="spring-actuator"><a class="header" href="#spring-actuator">Spring Actuator</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="spring-actuator"><a class="header" href="#spring-actuator">Spring Actuator</a></h1>
 <p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html">Spring Actuator</a> enables many production-ready features for your Spring Boot Applications such as health checks, metrics gathering.</p>
 <pre><code class="language-xml">&lt;dependencies&gt;
     &lt;dependency&gt;
@@ -333,7 +311,7 @@ public class RedisHealthIndicator extends AbstractReactiveHealthIndicator {
 <pre><code class="language-txt">management.endpoint.health.group.readiness.include=readinessState,redis,db
 </code></pre>
 <p><strong>Note that</strong> the naming needs to correspond to the class name. For example, if you have <code>PubsubHealthUbducator.java</code>, then you need to have <code>include=pubsub</code> in the actuator configuration. If you have <code>PubSubHealthIndicator.java</code>, then you need to have camel case <code>include=pubSub</code>.</p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="swagger"><a class="header" href="#swagger">Swagger</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="swagger"><a class="header" href="#swagger">Swagger</a></h1>
 <p>We often use Swagger to generate REST API documentations and even REST client. However, if put all the API definition in a single Swagger <code>.yaml</code> file, it gets really messy as the application grows.</p>
 <p>To have a clean Swagger configuration, first create a multiple module maven project, as follows:</p>
 <pre><code>project
@@ -622,7 +600,7 @@ class AppConfig {
   }
 }
 </code></pre>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="create-a-maven-plugin-with-freemarker"><a class="header" href="#create-a-maven-plugin-with-freemarker">Create a Maven Plugin with FreeMarker</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-maven-plugin-with-freemarker"><a class="header" href="#create-a-maven-plugin-with-freemarker">Create a Maven Plugin with FreeMarker</a></h1>
 <p>Sometimes it is quite convinent to generate Java source code from a specification, such as from a <code>.yaml</code> file. </p>
 <p>You can create a maven plugin to read the <code>.yaml</code> specification and generate the Java source code into the <code>target/generated-sources/</code> directory using <a href="https://freemarker.apache.org/">FreeMarker</a>, a Java Template Engine.</p>
 <p>To create a maven plugin with freemarker, you need the following dependencies. And you will typically name your plugin <code>&lt;yourplugin&gt;-maven-plugin</code>.</p>
@@ -852,8 +830,8 @@ public class ExampleJava {
 }
 </code></pre>
 <p>You can read more about FreeMarker directives at <a href="https://freemarker.apache.org/docs/index.html">Apache FreeMarker Manual</a>.</p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="docker"><a class="header" href="#docker">Docker</a></h1>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="dockerfile"><a class="header" href="#dockerfile">Dockerfile</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="docker"><a class="header" href="#docker">Docker</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dockerfile"><a class="header" href="#dockerfile">Dockerfile</a></h1>
 <p>The default working directory is root <code>/</code>.</p>
 <p><code>WORKDIR</code> is used to set working directory for any <code>RUN</code>, <code>COPY</code>, <code>ADD</code>, <code>ENTRYPOINT</code>, <code>CMD</code> instructions. And the directory is created if it does not exist.</p>
 <h2 id="entrypoint-and-cmd"><a class="header" href="#entrypoint-and-cmd">ENTRYPOINT and CMD</a></h2>
@@ -901,7 +879,7 @@ ARG GCLOUD_SDK_VERSION
 RUN echo $GCLOUD_SDK_VERSION &gt; image_version
 </code></pre>
 <p>Reference: <a href="https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact">https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact</a></p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="volume"><a class="header" href="#volume">Volume</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="volume"><a class="header" href="#volume">Volume</a></h1>
 <pre><code class="language-Dockerfile">VOLUME [&quot;/data&quot;]
 </code></pre>
 <p>The <code>VOLUME</code> creates a mount point to <strong>the volume on the host</strong> that holds the data persisted by the docker container during container runtime.</p>
@@ -948,7 +926,7 @@ RUN echo $GCLOUD_SDK_VERSION &gt; image_version
 <ul>
 <li><a href="https://hub.docker.com/_/mysql/">https://hub.docker.com/_/mysql/</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="network"><a class="header" href="#network">network</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="network"><a class="header" href="#network">network</a></h1>
 <h2 id="you-dont-need-docker-compose"><a class="header" href="#you-dont-need-docker-compose">You don't need <code>docker-compose</code></a></h2>
 <p><code>docker-compose</code> by default creates a <code>bridge</code> docker network named <code>&lt;directory&gt;_default</code> for connecting docker containers. To specify different network name:</p>
 <pre><code class="language-yaml">version: &quot;3.3&quot;
@@ -982,14 +960,14 @@ docker run -d --rm --network skywalker --name postgres registry/image_name:versi
 <pre><code class="language-bash">docker network inspect skywalker
 </code></pre>
 <p>Other useful commands can be found at <a href="https://docs.docker.com/engine/reference/commandline/network/">https://docs.docker.com/engine/reference/commandline/network/</a>.</p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="docker-run"><a class="header" href="#docker-run">docker run</a></h1>
-<h2 id="docker-run-image-multiple-commands"><a class="header" href="#docker-run-image-multiple-commands">docker run <IMAGE> <MULTIPLE COMMANDS></a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="docker-run"><a class="header" href="#docker-run">docker run</a></h1>
+<h2 id="docker-run-1"><a class="header" href="#docker-run-1">docker run <IMAGE> <MULTIPLE COMMANDS></a></h2>
 <pre><code class="language-bash">docker run - w /usr/src/app image /bin/bash -c &quot;mvn clean package;jar -jar app.jar&quot;
 </code></pre>
 <p><a href="https://docs.docker.com/engine/reference/commandline/run/#set-working-directory--w">Set working directory</a></p>
 <p>The <code>-w</code> lets the command being executed inside the given directory, here <code>/usr/src/app</code>. If the path does not exit it is created inside the container.</p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="linux"><a class="header" href="#linux">Linux</a></h1>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h2 id="volume-1"><a class="header" href="#volume-1">Volume</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linux"><a class="header" href="#linux">Linux</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="volume-1"><a class="header" href="#volume-1">Volume</a></h2>
 <p>Files are stored on random-access storage devices, including hard disks, solid-state disks.</p>
 <p>Files can only be stored on a storage device with a file system created. Any entity containing a file system is generally known as a volume.</p>
 <p>The volume may be partition or a whole device. Each volume that contains a file system must also contain information about the files in the system. This information is kept in entries in a <strong>device directory</strong> that records informtation -- such as name, location, size, and type -- for all files on that volume.</p>
@@ -999,10 +977,11 @@ docker run -d --rm --network skywalker --name postgres registry/image_name:versi
 <p>The mount procedure is straightforward. The operating system is given the name of the device and the <strong>mount point</strong> -- where the file system is to be attached.</p>
 <h4 id="example-aws-ebs-volume"><a class="header" href="#example-aws-ebs-volume">Example (AWS EBS volume)</a></h4>
 <p>When we launch an AWS EC2 instance, we can add additional storage, by attaching additional <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes.html">EBS volumes</a>.</p>
-<table><thead><tr><th>Volume Type</th><th>Device</th><th>Snapshot</th><th>Size(GiB)</th><th>Volume Type</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Volume Type</th><th>Device</th><th>Snapshot</th><th>Size(GiB)</th><th>Volume Type</th></tr></thead><tbody>
 <tr><td>Root</td><td>/dev/xvda</td><td>snap-0ee8a4a337cf9d029</td><td>128</td><td>SSD</td></tr>
 <tr><td>EBS</td><td>/dev/xvdb</td><td></td><td>8</td><td>SSD</td></tr>
 </tbody></table>
+</div>
 <p>The EBS storage attached to the EC2 instance is not ready to be used since it doesn't contain a file system. We therefore need to create a file system on this storage device and mount it onto the EC2 instance OS.</p>
 <p>We could <em>ssh</em> into the launched EC2 instance and issue the commands below, in order to store files into this EBS volume.</p>
 <pre><code class="language-bash">$ lsblk
@@ -1031,11 +1010,11 @@ table {
   margin: 0!important;
 }
 </style>
-<table><thead><tr><th align="left">Device</th><th align="left">Size</th><th align="left">Type</th><th align="left">Mount point</th><th align="left">File system type</th></tr></thead><tbody>
-<tr><td align="left">/dev/sda1</td><td align="left">100M</td><td align="left">BIOS boot</td><td align="left">/boot/efi</td><td align="left">vfat  FAT32</td></tr>
-<tr><td align="left">/dev/sda2</td><td align="left">298G</td><td align="left">Linux filesystem</td><td align="left">/</td><td align="left">btrfs Oracle's Btrfs</td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Device</th><th style="text-align: left">Size</th><th style="text-align: left">Type</th><th style="text-align: left">Mount point</th><th style="text-align: left">File system type</th></tr></thead><tbody>
+<tr><td style="text-align: left">/dev/sda1</td><td style="text-align: left">100M</td><td style="text-align: left">BIOS boot</td><td style="text-align: left">/boot/efi</td><td style="text-align: left">vfat  FAT32</td></tr>
+<tr><td style="text-align: left">/dev/sda2</td><td style="text-align: left">298G</td><td style="text-align: left">Linux filesystem</td><td style="text-align: left">/</td><td style="text-align: left">btrfs Oracle's Btrfs</td></tr>
 </tbody></table>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="install-void-linux"><a class="header" href="#install-void-linux">Install Void Linux</a></h1>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="install-void-linux"><a class="header" href="#install-void-linux">Install Void Linux</a></h1>
 <h2 id="download--flash"><a class="header" href="#download--flash">Download &amp; Flash</a></h2>
 <p>First download a <a href="https://docs.voidlinux.org/installation/index.html#downloading-installation-media">live image</a>. Download <code>void-live-x86_64-20210218-gnome.iso</code> if you want to use the <a href="https://www.gnome.org/">GNOME</a> desktop.</p>
 <p>Next, flash the downloaded image to a USB drive. You can use <a href="https://www.balena.io/etcher/">etcher</a>.</p>
@@ -1061,16 +1040,18 @@ table {
   margin: 0!important;
 }
 </style>
-<table><thead><tr><th align="left">Device</th><th align="left">Size</th><th align="left">Type</th></tr></thead><tbody>
-<tr><td align="left">/dev/sda1</td><td align="left">100M</td><td align="left">BIOS boot</td></tr>
-<tr><td align="left">/dev/sda2</td><td align="left">298G</td><td align="left">Linux filesystem</td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Device</th><th style="text-align: left">Size</th><th style="text-align: left">Type</th></tr></thead><tbody>
+<tr><td style="text-align: left">/dev/sda1</td><td style="text-align: left">100M</td><td style="text-align: left">BIOS boot</td></tr>
+<tr><td style="text-align: left">/dev/sda2</td><td style="text-align: left">298G</td><td style="text-align: left">Linux filesystem</td></tr>
 </tbody></table>
+</div>
 <h3 id="file-system"><a class="header" href="#file-system">File system</a></h3>
 <p>We need to create and mount the file systems for each of the 2 partitions:</p>
-<table><thead><tr><th align="left">Device</th><th align="left">Mount point</th><th align="left">File system type</th></tr></thead><tbody>
-<tr><td align="left">/dev/sda1</td><td align="left">/boot/efi</td><td align="left">vfat  FAT32</td></tr>
-<tr><td align="left">/dev/sda2</td><td align="left">/</td><td align="left">btrfs Oracle's Btrfs</td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Device</th><th style="text-align: left">Mount point</th><th style="text-align: left">File system type</th></tr></thead><tbody>
+<tr><td style="text-align: left">/dev/sda1</td><td style="text-align: left">/boot/efi</td><td style="text-align: left">vfat  FAT32</td></tr>
+<tr><td style="text-align: left">/dev/sda2</td><td style="text-align: left">/</td><td style="text-align: left">btrfs Oracle's Btrfs</td></tr>
 </tbody></table>
+</div>
 <h2 id="post-installation"><a class="header" href="#post-installation">Post Installation</a></h2>
 <p>Now we have void linux installed. We need to <a href="https://docs.voidlinux.org/xbps/index.html#updating">perform a system update</a> for the first time:</p>
 <pre><code class="language-bash">sudo xbps-install -u xbps
@@ -1079,7 +1060,7 @@ sudo xbps-install -Su
 <br>
 Reference
 <p><a href="https://docs.voidlinux.org/installation/live-images/guide.html">https://docs.voidlinux.org/installation/live-images/guide.html</a></p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="netcat"><a class="header" href="#netcat">netcat</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="netcat"><a class="header" href="#netcat">netcat</a></h1>
 <p>To scan a TCP port using <code>netcat</code>, use: </p>
 <pre><code class="language-bash">nc -zv 13.49.227.25 80
 </code></pre>
@@ -1087,8 +1068,8 @@ Reference
 <li>The <code>-z</code> option is for scanning without sending any data.</li>
 <li>The <code>-v</code> option is to print verbose output.</li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="aws"><a class="header" href="#aws">AWS</a></h1>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="ebs"><a class="header" href="#ebs">EBS</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="aws"><a class="header" href="#aws">AWS</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ebs"><a class="header" href="#ebs">EBS</a></h1>
 <p><img src="aws/../img/aws-ebs.svg" alt="ebs" /></p>
 <p><strong>Note that</strong></p>
 <ul>
@@ -1123,7 +1104,7 @@ Suppose your MySQL database needs to read 102,400 KB (100 MB) of data every seco
 <h3 id="provisioned-iops-ssd-io1"><a class="header" href="#provisioned-iops-ssd-io1">Provisioned IOPS SSD (io1)</a></h3>
 <p>The ratio of storage in gigabytes to IOPS must be at least <code>50:1</code>. For example, if you want 32,000 IOPS, you must provision at least 640 GB of storage.</p>
 <p>You can provision up to 64,000 IOPS per io1 volume.</p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="ec2"><a class="header" href="#ec2">EC2</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ec2"><a class="header" href="#ec2">EC2</a></h1>
 <h1 id="tenancy-placement"><a class="header" href="#tenancy-placement">Tenancy Placement</a></h1>
 <p>Tenancy defines how EC2 instances are distributed across physical hardware and affects pricing. There are three tenancy options available: </p>
 <ul>
@@ -1139,11 +1120,12 @@ Suppose your MySQL database needs to read 102,400 KB (100 MB) of data every seco
 </ul>
 <h3 id="vpc-tenancy"><a class="header" href="#vpc-tenancy">VPC tenancy</a></h3>
 <p>When you create a launch configuration, the default value for the instance placement tenancy is null and the instance tenancy is controlled by the tenancy attribute of the VPC. </p>
-<table><thead><tr><th align="left">Launch configuration tenancy</th><th align="left">VPC tenancy=default</th><th align="left">VPC tenancy=dedicated</th></tr></thead><tbody>
-<tr><td align="left">not specified</td><td align="left">shared-tenancy instances</td><td align="left">Dedicated Instances</td></tr>
-<tr><td align="left"><code>default</code></td><td align="left">shared-tenancy instances</td><td align="left">Dedicated Instances</td></tr>
-<tr><td align="left"><code>dedicated</code></td><td align="left">Dedicated instances</td><td align="left">Dedicated Instances</td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Launch configuration tenancy</th><th style="text-align: left">VPC tenancy=default</th><th style="text-align: left">VPC tenancy=dedicated</th></tr></thead><tbody>
+<tr><td style="text-align: left">not specified</td><td style="text-align: left">shared-tenancy instances</td><td style="text-align: left">Dedicated Instances</td></tr>
+<tr><td style="text-align: left"><code>default</code></td><td style="text-align: left">shared-tenancy instances</td><td style="text-align: left">Dedicated Instances</td></tr>
+<tr><td style="text-align: left"><code>dedicated</code></td><td style="text-align: left">Dedicated instances</td><td style="text-align: left">Dedicated Instances</td></tr>
 </tbody></table>
+</div>
 <p>Note that: </p>
 <ul>
 <li>Some <code>AWS services or their features</code> won't work with a VPC with the instance tenancy set to dedicated.</li>
@@ -1194,7 +1176,7 @@ Suppose your MySQL database needs to read 102,400 KB (100 MB) of data every seco
 <li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-dedicated-instances.html">Configuring instance tenancy with a launch configuration</a></li>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Group</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="iam"><a class="header" href="#iam">IAM</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="iam"><a class="header" href="#iam">IAM</a></h1>
 <p>An AWS account has two types of users, root user and IAM user. And they are belong to the same AWS account. When we login onto AWS management console, both root user and IAM user share the same account ID.</p>
 <h2 id="iam-user-policies"><a class="header" href="#iam-user-policies">IAM user policies</a></h2>
 <p>IAM user policies are identity-based policies that control an IAM user's access to account resources, such as a S3 bucket.</p>
@@ -1275,7 +1257,7 @@ The permissions boundary limits the user to performing only those actions laid o
 <li><code>SNS</code> topics have resource policies to control who can publish messages or subscribe to a topic, as well as which delivery protocols they can use.</li>
 <li><code>Simple Queue Service</code> (SQS) queues also use resource-based SQS access policies to control who can send to and receive messages from a queue.</li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="iam-role"><a class="header" href="#iam-role">IAM role</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="iam-role"><a class="header" href="#iam-role">IAM role</a></h1>
 <p>IAM roles enables cross user or cross account temporary access for account resources.</p>
 <p><img src="aws/../img/aws-iamrole.svg" alt="iamrole" /></p>
 <p>An IAM role is not assigned to a user (by an admin). Rather, the IAM user assumes the role created by the admin.
@@ -1344,7 +1326,7 @@ source_profile=account1
 <pre><code class="language-bash">aws sts assume-role --role-arn &quot;arn:aws:iam::&lt;admin_account-id&gt;:role/s3fullaccess-user1&quot; --role-session-name AWSCLI-Session
 </code></pre>
 <p>A full example for assuming IAM role using <code>awscli</code> is <a href="https://aws.amazon.com/premiumsupport/knowledge-center/iam-assume-role-cli/">here</a></p>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="aws-kms"><a class="header" href="#aws-kms">AWS KMS</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="aws-kms"><a class="header" href="#aws-kms">AWS KMS</a></h1>
 <h2 id="data-encryption"><a class="header" href="#data-encryption">Data Encryption</a></h2>
 <h3 id="with-data-keys"><a class="header" href="#with-data-keys">With Data Keys</a></h3>
 <p><em>Data keys</em> are encryption keys that you can use to encrypt data.</p>
@@ -1395,7 +1377,7 @@ source_profile=account1
 <ul>
 <li><a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS Key Management Service</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="vpc"><a class="header" href="#vpc">VPC</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vpc"><a class="header" href="#vpc">VPC</a></h1>
 <p><img src="aws/../img/aws-vpc.svg" alt="vpc" /></p>
 <h2 id="subnets"><a class="header" href="#subnets">Subnets</a></h2>
 <p>VPC CIDR: 172.16.0.0/16</p>
@@ -1462,7 +1444,7 @@ source_profile=account1
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html</a></li>
 <li><a href="https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13788-3.html">https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13788-3.html</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="elastic-load-balancing"><a class="header" href="#elastic-load-balancing">Elastic Load Balancing</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="elastic-load-balancing"><a class="header" href="#elastic-load-balancing">Elastic Load Balancing</a></h1>
 <h3 id="public-application-load-balancer-with-ec2-auto-scaling-group-in-private-subnet"><a class="header" href="#public-application-load-balancer-with-ec2-auto-scaling-group-in-private-subnet">Public Application Load Balancer with EC2 Auto Scaling Group in Private Subnet</a></h3>
 <p><img src="aws/../img/aws-elb.svg" alt="elb" /></p>
 <ul>
@@ -1476,7 +1458,7 @@ source_profile=account1
 <li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html">Application Load Balancer</a></li>
 <li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html">Network Load Balancer</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="auto-scaling"><a class="header" href="#auto-scaling">Auto Scaling</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="auto-scaling"><a class="header" href="#auto-scaling">Auto Scaling</a></h1>
 <p>Suppose, we launch 10 instances in an Auto Scaling Group and maitain the <code>AverageCPUUsage</code> between 40% and 60%.</p>
 <pre><code>Metric value
 
@@ -1508,7 +1490,7 @@ source_profile=account1
 <ul>
 <li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html">Step and simple scaling poclies</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="route-53"><a class="header" href="#route-53">Route 53</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="route-53"><a class="header" href="#route-53">Route 53</a></h1>
 <p>You can use Route 53 <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-failover">failover routing</a> policy to route traffic to the secondary cluster deployed in another region in case outage of the primary cluster. Note that <code>Simple Routing Policy</code> does not support health-checks.</p>
 <p><img src="aws/../img/aws-53-failover.svg" alt="failover" /></p>
 <p>As Elastic Load Blancer does not support RDS instances, you can, however, use Route 53 <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted">weighted routing</a> policy to distribute traffic across the RDS Read Replicas. In case of a Read Replica health-check failure, Route 53 weighted record will exlcude those adresses in its reponse to a DNS query.</p>
@@ -1528,7 +1510,7 @@ source_profile=account1
 <li><a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-aws-resources.html">Routing internet traffic to AWS resources using Route 53</a></li>
 <li><a href="https://docs.aws.amazon.com/whitepapers/latest/real-time-communication-on-aws/cross-region-dns-based-load-balancing-and-failover.html">Cross-Region DNS-Based Load Balancing and Failover</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="global-accelerator"><a class="header" href="#global-accelerator">Global Accelerator</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="global-accelerator"><a class="header" href="#global-accelerator">Global Accelerator</a></h1>
 <p>AWS Global Accelerator is a networking service that helps you improve the <strong>availability</strong> and performance of the applications that you offer to your global users.</p>
 <h2 id="vs-elb"><a class="header" href="#vs-elb">VS. ELB</a></h2>
 <p>ELB provides load balancing within one Region, AWS Global Accelerator provides traffic management across multiple Regions.
@@ -1552,7 +1534,7 @@ A regional ELB load balancer is an ideal target for AWS Global Accelerator. AWS 
 <li><a href="https://aws.amazon.com/global-accelerator/faqs/">AWS Global Accelerator FAQs</a></li>
 <li><a href="https://docs.aws.amazon.com/global-accelerator/latest/dg/dns-addressing-custom-domains.dns-addressing.html">DNS addressing in Global Accelerator</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="cloud-front"><a class="header" href="#cloud-front">Cloud Front</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cloud-front"><a class="header" href="#cloud-front">Cloud Front</a></h1>
 <h2 id="cloudfront-caching"><a class="header" href="#cloudfront-caching">CloudFront Caching</a></h2>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html">Caching based on Query String</a>
@@ -1582,7 +1564,7 @@ A regional ELB load balancer is an ideal target for AWS Global Accelerator. AWS 
 <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ConfiguringCaching.html">CloudFront Caching</a></li>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-overview.html">CloudFront Private Content</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="lambda"><a class="header" href="#lambda">Lambda</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lambda"><a class="header" href="#lambda">Lambda</a></h1>
 <p>First of all, we need to distinguish between <code>Lambda</code> and <code>Lambda functions</code>. Lambda is AWS service that invokes your <code>Lambda functions</code>.</p>
 <h2 id="lambda-functions-invocation"><a class="header" href="#lambda-functions-invocation">Lambda functions invocation</a></h2>
 <p>A Lambda function can be either invoked synchrously or asynchronously. Based on the invocation type, the retry and error handling mechanism differs.</p>
@@ -1655,7 +1637,7 @@ A regional ELB load balancer is an ideal target for AWS Global Accelerator. AWS 
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html">https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html</a></li>
 <li><a href="https://data.solita.fi/lessons-learned-from-combining-sqs-and-lambda-in-a-data-project/">Lessons learned from combining SQS and Lambda</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="s3-and-glacier"><a class="header" href="#s3-and-glacier">S3 and Glacier</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="s3-and-glacier"><a class="header" href="#s3-and-glacier">S3 and Glacier</a></h1>
 <p><code>S3 Standard-IA</code> and <code>S3 One Zone-IA</code> storage classes are designed for long-lived and infrequently accessed data that still requires millisecond access.</p>
 <p>The <code>S3 Glacier</code> and <code>S3 Glacier Deep Archive</code> storage classes are designed for low-cost data archiving. The S3 Glacier and S3 Glacier Deep Archive objects are not available for real-time access. You must first restore the S3 Glacier and S3 Glacier Deep Archive objects before you can access them.</p>
 <ul>
@@ -1718,7 +1700,7 @@ A regional ELB load balancer is an ideal target for AWS Global Accelerator. AWS 
 <li>Data transferred out to Amazon CloudFront.</li>
 </ul>
 <h3 id="s3-range-get"><a class="header" href="#s3-range-get">S3 Range GET?</a></h3>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="replication--backups"><a class="header" href="#replication--backups">Replication &amp; Backups</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="replication--backups"><a class="header" href="#replication--backups">Replication &amp; Backups</a></h1>
 <h3 id="s3"><a class="header" href="#s3">S3</a></h3>
 <p>All S3 storage classes except <code>One Zone-Infrequent Access</code> distribute objects across multiple
 availability zones.</p>
@@ -1753,14 +1735,15 @@ a value other than 0.</p>
 <p>Replicas can be promoted to their own standalone database, but this breaks the replication. 
 Moreover, no automatic failover, if primary database fails you must manually update urls to point at the newly promoted database.</p>
 <h5 id="compare"><a class="header" href="#compare">Compare</a></h5>
-<table><thead><tr><th align="left">Mutil-AZ Deployments</th><th align="left">Read Replicas</th></tr></thead><tbody>
-<tr><td align="left">Synchronous replication - highly durable</td><td align="left">Asynchronous replication - highly scalable</td></tr>
-<tr><td align="left">Only database engine on primary instance is active</td><td align="left">All read replicas are accessible and can be used for read scaling</td></tr>
-<tr><td align="left">Automated backups are taken from standby instance</td><td align="left">No backups configured by default</td></tr>
-<tr><td align="left">Always span at least 2 Availability Zones within a single region</td><td align="left">Can be within Availability Zone, Cross-AZ, or Cross-Region</td></tr>
-<tr><td align="left">Database engine version upgrades happen on primary instance</td><td align="left">Database engine version upgrade is independent from source instance</td></tr>
-<tr><td align="left">Automatic failover to standby when a problem is detected</td><td align="left">can be manually promoted to a standalone database instance</td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Mutil-AZ Deployments</th><th style="text-align: left">Read Replicas</th></tr></thead><tbody>
+<tr><td style="text-align: left">Synchronous replication - highly durable</td><td style="text-align: left">Asynchronous replication - highly scalable</td></tr>
+<tr><td style="text-align: left">Only database engine on primary instance is active</td><td style="text-align: left">All read replicas are accessible and can be used for read scaling</td></tr>
+<tr><td style="text-align: left">Automated backups are taken from standby instance</td><td style="text-align: left">No backups configured by default</td></tr>
+<tr><td style="text-align: left">Always span at least 2 Availability Zones within a single region</td><td style="text-align: left">Can be within Availability Zone, Cross-AZ, or Cross-Region</td></tr>
+<tr><td style="text-align: left">Database engine version upgrades happen on primary instance</td><td style="text-align: left">Database engine version upgrade is independent from source instance</td></tr>
+<tr><td style="text-align: left">Automatic failover to standby when a problem is detected</td><td style="text-align: left">can be manually promoted to a standalone database instance</td></tr>
 </tbody></table>
+</div>
 <h4 id="point-in-time-recovery"><a class="header" href="#point-in-time-recovery">Point-in-time recovery</a></h4>
 <p>Enabling automatic backups enables point-in-time recovery, which archives database change logs to S3 every 5 minutes.</p>
 <p>RDS keeps automated snapshots for a limited period of time and then deletes them. You can choose a retention period between one day and 35 days. 
@@ -1786,7 +1769,7 @@ The default is seven days. To disable automated snapshots, set the retention per
 <ul>
 <li><a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html#working-with-snapshots-overview">https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html#working-with-snapshots-overview</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="elasticache"><a class="header" href="#elasticache">ElastiCache</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="elasticache"><a class="header" href="#elasticache">ElastiCache</a></h1>
 <p>A <em>node</em> is the smallest buidling block of an ElastiCache deployment. Each node has its own DNS name and port.</p>
 <p>Both Redis and Memcached cluster need to be run in a VPC, a collection of subnets within that VPC.</p>
 <h2 id="redis"><a class="header" href="#redis">Redis</a></h2>
@@ -1807,19 +1790,20 @@ table {
   margin: 0!important;
 }
 </style>
-<table><thead><tr><th align="left"></th><th align="left">Memcached</th><th align="left">Redis</th></tr></thead><tbody>
-<tr><td align="left">Data Partitioning</td><td align="left">Yes</td><td align="left">Yes</td></tr>
-<tr><td align="left">Advanced data structures</td><td align="left">-</td><td align="left">Yes</td></tr>
-<tr><td align="left">Multithreaded architecture</td><td align="left">Yes</td><td align="left">-</td></tr>
-<tr><td align="left">Snapshots/Backups</td><td align="left">-</td><td align="left">Yes</td></tr>
-<tr><td align="left">Replication</td><td align="left">-</td><td align="left">Yes</td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left"></th><th style="text-align: left">Memcached</th><th style="text-align: left">Redis</th></tr></thead><tbody>
+<tr><td style="text-align: left">Data Partitioning</td><td style="text-align: left">Yes</td><td style="text-align: left">Yes</td></tr>
+<tr><td style="text-align: left">Advanced data structures</td><td style="text-align: left">-</td><td style="text-align: left">Yes</td></tr>
+<tr><td style="text-align: left">Multithreaded architecture</td><td style="text-align: left">Yes</td><td style="text-align: left">-</td></tr>
+<tr><td style="text-align: left">Snapshots/Backups</td><td style="text-align: left">-</td><td style="text-align: left">Yes</td></tr>
+<tr><td style="text-align: left">Replication</td><td style="text-align: left">-</td><td style="text-align: left">Yes</td></tr>
 </tbody></table>
+</div>
 <h3 id="read-more-7"><a class="header" href="#read-more-7">Read More</a></h3>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html">Elasticache Redis</a></li>
 <li><a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/WhatIs.Components.html">Elasticache Memcached</a></li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="security"><a class="header" href="#security">Security</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="security"><a class="header" href="#security">Security</a></h1>
 <p><img src="aws/../img/aws-security.svg" alt="security" /></p>
 <h2 id="data-encryption-1"><a class="header" href="#data-encryption-1">Data Encryption</a></h2>
 <h3 id="data-at-rest"><a class="header" href="#data-at-rest">Data at Rest</a></h3>
@@ -1861,7 +1845,7 @@ table {
 <p>AWS Shield and AWS WAF to fortify your cloud network. </p>
 </li>
 </ul>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h2 id="amazon-fsx-for-lustre"><a class="header" href="#amazon-fsx-for-lustre">Amazon FSx for Lustre</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="amazon-fsx-for-lustre"><a class="header" href="#amazon-fsx-for-lustre">Amazon FSx for Lustre</a></h2>
 <p>Amazon FSx also integrates with Amazon S3, making it easy for you to process cloud data sets with the Lustre high-performance file system. When linked to an S3 bucket, an FSx for Lustre file system transparently presents S3 objects as files and allows you to write changed data back to S3.</p>
 <ul>
 <li><a href="https://aws.amazon.com/es/fsx/lustre/faqs/?nc=sn&amp;loc=5">FAQ</a></li>
@@ -2026,9 +2010,7 @@ Spot Instances are a cost-effective choice if you can be flexible about when you
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
 
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -2036,49 +2018,35 @@ Spot Instances are a cost-effective choice if you can be flexible about when you
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
 
-                
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
-        
-        <script type="text/javascript">
+        <script>
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
         </script>
-        
-        
 
+    </div>
     </body>
 </html>
