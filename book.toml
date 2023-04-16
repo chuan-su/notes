@@ -4,6 +4,6 @@ language = "en"
 multilingual = false
 src = "src"
 [output.html]
-default-theme = "rust"
+default-theme = "navy"
 [output.html.fold]
 enable = true
